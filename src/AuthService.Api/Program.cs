@@ -1,9 +1,17 @@
+using AuthService.Api.Extensions;
+using AuthService.Persistence.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddControllers();
+
+builder.Services.AddApplicationServices(builder.Configuration);
+
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 var app = builder.Build();
 
@@ -15,6 +23,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.MapControllers();
 
 var summaries = new[]
 {
@@ -35,6 +44,26 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast")
 .WithOpenApi();
+
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+
+    try
+    {
+        logger.LogInformation("Iniciando la migracion de la base de datos");
+        await context.Database.EnsureCreatedAsync();
+        logger.LogInformation("Base de datos migrada exitosamente");
+        await DataSeeder.SeedAsync(context);
+        logger.LogInformation("Datos iniciales sembrados exitosamente");
+    }
+    catch (Exception ex)
+    {
+        logger.LogError(ex, "Error al inicializar la base de datos");
+        throw;
+    }
+}
 
 app.Run();
 

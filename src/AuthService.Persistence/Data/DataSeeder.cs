@@ -3,7 +3,7 @@ using AuthService.Persistence.Data;
 using AuthService.Application.Services;
 using Microsoft.EntityFrameworkCore;
 
-namespace AuthService.Persistence.Seeders;
+namespace AuthService.Persistence.Data;
 
 public static class DataSeeder
 {

@@ -39,17 +39,17 @@ public class ApplicationDbContext : DbContext
 
             entity.HasIndex(e => e.Email).IsUnique();
 
-            entity.HasMany<UserRole>()
+            entity.HasMany(u => u.UserRoles)
                   .WithOne(ur => ur.User)
                   .HasForeignKey(ur => ur.UserId)
                   .OnDelete(DeleteBehavior.Cascade);
 
-            entity.HasOne<UserEmail>()
+            entity.HasOne(u => u.UserEmail)
                   .WithOne(ue => ue.User)
                   .HasForeignKey<UserEmail>(ue => ue.UserId)
                   .OnDelete(DeleteBehavior.Cascade);
 
-            entity.HasOne<UserPasswordReset>()
+            entity.HasOne(u => u.UserPasswordReset)
                   .WithOne(upr => upr.User)
                   .HasForeignKey<UserPasswordReset>(upr => upr.UserId)
                   .OnDelete(DeleteBehavior.Cascade);
@@ -69,11 +69,6 @@ public class ApplicationDbContext : DbContext
 
             entity.HasIndex(e => new { e.UserId, e.RoleId })
                   .IsUnique();
-
-            entity.HasOne(e => e.Role)
-                  .WithMany(r => r.UserRoles)
-                  .HasForeignKey(e => e.RoleId)
-                  .OnDelete(DeleteBehavior.Cascade);
         });
 
         // EMPLOYEES

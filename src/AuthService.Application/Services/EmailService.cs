@@ -41,10 +41,10 @@ public class EmailService(IConfiguration configuration, ILogger<EmailService> lo
  
     public async Task SendWelcomeEmailAsync(string email, string username)
     {
-        var subject = "Bienvenido a AuthDotnet!";
+        var subject = "Bienvenido a nuestra gestion de restaurantes!";
  
         var body = $@"
-            <h2>Bienvenido a AuthDotnet, {username}!</h2>
+            <h2>Bienvenido a nuestra gestion de restaurantes, {username}!</h2>
             <p>Tu cuenta ha sido verificada y activada exitosamente.</p>
             <p>Ahora puedes disfrutar de todas las funciones de nuestra plataforma.</p>
             <p>Si tienes alguna pregunta, no dudes en contactar a nuestro equipo de soporte.</p>
