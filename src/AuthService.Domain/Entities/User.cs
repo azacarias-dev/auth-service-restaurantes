@@ -16,6 +16,10 @@ public class User
     [MaxLength(50)]
     public string Surname { get; set; } = string.Empty;
 
+    [Required(ErrorMessage = "La contraseña es requerida.")]
+    [MaxLength(255)]
+    public string Password { get; set; } = string.Empty;
+
     [Required(ErrorMessage = "El correo es requerido.")]
     [EmailAddress(ErrorMessage = "Formato de correo invalido.")]
     [MaxLength(100)]
@@ -32,4 +36,8 @@ public class User
 
     [Required(ErrorMessage = "El estado es requerido.")]
     public bool IsActive { get; set; } = true;
+
+    public ICollection<UserRole> UserRoles { get; set; } = [];
+    public UserEmail UserEmail { get; set; } = null!;
+    public UserPasswordReset UserPasswordReset { get; set; } = null!;
 }

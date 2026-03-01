@@ -10,7 +10,7 @@ public interface IUserRepository{
 
     Task<User?> GetByEmailAsync(string email);
 
-    Task<User?> GetByUsernameAsync(string username);
+    Task<User?> GetBySurnameAsync(string surname);
 
     Task<User?> GetByEmailVerificationTokenAsync(string token);
 
@@ -18,7 +18,7 @@ public interface IUserRepository{
 
     Task<bool> ExistsByEmailAsync(string email);
 
-    Task<bool> ExistsByUsernameAsync(string username);
+    Task<bool> ExistsBySurnameAsync(string surname);
 
     Task<User> UpdateAsync(User user);
     
