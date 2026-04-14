@@ -1,7 +1,7 @@
-using AuthService.Domain.Entities;
-using AuthService.Domain.Constants;
-using AuthService.Persistence.Data;
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+using AuthService.Persistence.Data;
 using AuthService.Application.Interfaces;
 using AuthService.Application.Services;
 
@@ -9,18 +9,44 @@ namespace AuthService.Api.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddApplicationServices(this IServiceCollection services, 
-    IConfiguration configuration) 
+    public static IServiceCollection AddApplicationServices(
+        this IServiceCollection services,
+        IConfiguration configuration)
     {
-        // Se registra el ApplicationDbContext en el contenedor de servicios utilizando la cadena de conexión definida en el archivo de configuración (appsettings.json) bajo la clave "DefaultConnection". Se utiliza el proveedor de base de datos Npgsql para PostgreSQL y se configura para usar la convención de nomenclatura en snake_case.
+        // 🔥 DB CONTEXT (ESTO ES OBLIGATORIO)
         services.AddDbContext<ApplicationDbContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"))
-            .UseSnakeCaseNamingConvention());
-        
-        // Se registra el servicio de inicialización de datos (DataSeeder) en el contenedor de servicios con un alcance transitorio (Transient), lo que significa que se creará una nueva instancia del servicio cada vez que se solicite.
+                   .UseSnakeCaseNamingConvention());
+
+        // Servicios de aplicación
         services.AddScoped<IEmailService, EmailService>();
-        
+
         services.AddHealthChecks();
+
+        return services;
+    }
+
+    public static IServiceCollection AddApiDocumentation(this IServiceCollection services)
+    {
+        services.AddEndpointsApiExplorer();
+
+        services.AddSwaggerGen(options =>
+        {
+            options.SwaggerDoc("v1", new OpenApiInfo
+            {
+                Title = "Auth API",
+                Version = "v1",
+                Description = "API de autenticación"
+            });
+
+            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+
+            if (File.Exists(xmlPath))
+            {
+                options.IncludeXmlComments(xmlPath);
+            }
+        });
 
         return services;
     }

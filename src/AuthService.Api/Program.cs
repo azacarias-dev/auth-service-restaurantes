@@ -1,21 +1,29 @@
 using AuthService.Api.Extensions;
 using AuthService.Persistence.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+// -------------------------------------
+// SERVICIOS
+// -------------------------------------
 
 builder.Services.AddControllers();
 
+// 🔥 Swagger limpio (SIN duplicar)
+builder.Services.AddApiDocumentation();
+
+// Servicios
 builder.Services.AddApplicationServices(builder.Configuration);
 
+// Fix PostgreSQL
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// -------------------------------------
+// MIDDLEWARES
+// -------------------------------------
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -25,25 +33,9 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.MapControllers();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+// -------------------------------------
+// DB INIT
+// -------------------------------------
 
 using (var scope = app.Services.CreateScope())
 {
@@ -53,9 +45,9 @@ using (var scope = app.Services.CreateScope())
     try
     {
         logger.LogInformation("Iniciando la migracion de la base de datos");
-        await context.Database.EnsureCreatedAsync();
-        logger.LogInformation("Base de datos migrada exitosamente");
+
         await DataSeeder.SeedAsync(context);
+
         logger.LogInformation("Datos iniciales sembrados exitosamente");
     }
     catch (Exception ex)
@@ -66,8 +58,3 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
