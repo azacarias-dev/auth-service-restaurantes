@@ -14,11 +14,12 @@ public class RegisterDto
     public string Surname { get; set; } = string.Empty;
 
     [Required]
-    public string Username { get; set; } = string.Empty;
-
-    [Required]
     [EmailAddress]
     public string Email { get; set; } = string.Empty;
+
+    [Required]
+    [MaxLength(100)]
+    public string Address { get; set; } = string.Empty;
 
     [Required]
     [MinLength(8)]
@@ -27,6 +28,4 @@ public class RegisterDto
     [Required]
     [StringLength(8, MinimumLength = 8)]
     public string Phone { get; set; } = string.Empty;
-
-    public IFileData? ProfilePicture { get; set; }
 }

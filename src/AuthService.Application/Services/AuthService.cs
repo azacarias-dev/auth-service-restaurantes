@@ -32,46 +32,11 @@ public class AuthService(
             throw new BusinessException(ErrorCodes.EMAIL_ALREADY_EXISTS, "Email already exists");
         }
 
-        // Verificar si el username ya existe
-        if (await userRepository.ExistsByUsernameAsync(registerDto.Username))
-        {
-            logger.LogRegistrationWithExistingUsername();
-            throw new BusinessException(ErrorCodes.USERNAME_ALREADY_EXISTS, "Username already exists");
-        }
-
-        // Validar y manejar la imagen de perfil
-        string profilePicturePath = string.Empty;
-
-        if (registerDto.ProfilePicture != null && registerDto.ProfilePicture.Size > 0)
-        {
-            var (isValid, errorMessage) = FileValidator.ValidateImage(registerDto.ProfilePicture);
-            if (!isValid)
-            {
-                logger.LogWarning($"File validation failed: {errorMessage}");
-                throw new BusinessException(ErrorCodes.IMAGE_UPLOAD_FAILED, errorMessage!);
-            }
-
-            try
-            {
-                // Solo generamos el nombre del archivo, ya no subimos a Cloudinary
-                profilePicturePath = FileValidator.GenerateSecureFileName(registerDto.ProfilePicture.FileName);
-            }
-            catch (Exception)
-            {
-                logger.LogImageUploadError();
-                throw new BusinessException(ErrorCodes.IMAGE_UPLOAD_FAILED, "Failed to process profile image");
-            }
-        }
-        else
-        {
-            profilePicturePath = "default-avatar.png";
-        }
 
         // Crear nuevo usuario y entidades relacionadas
         var emailVerificationToken = TokenGenerator.GenerateEmailVerificationToken();
 
         var userId = UuidGenerator.GenerateUserId();
-        var userProfileId = UuidGenerator.GenerateUserId();
         var userEmailId = UuidGenerator.GenerateUserId();
         var userRoleId = UuidGenerator.GenerateUserId();
 
@@ -87,17 +52,11 @@ public class AuthService(
             Id = userId,
             Name = registerDto.Name,
             Surname = registerDto.Surname,
-            Username = registerDto.Username,
             Email = registerDto.Email.ToLowerInvariant(),
+            Address = registerDto.Address,
+            Phone = registerDto.Phone,
             Password = passwordHashService.HashPassword(registerDto.Password),
-            Status = false,
-            UserProfile = new UserProfile
-            {
-                Id = userProfileId,
-                UserId = userId,
-                ProfilePictureUrl = profilePicturePath,
-                Phone = registerDto.Phone
-            },
+            IsActive = false,
             UserEmail = new UserEmail
             {
                 Id = userEmailId,
@@ -120,14 +79,14 @@ public class AuthService(
         // Guardar usuario y entidades relacionadas
         var createdUser = await userRepository.CreateAsync(user);
 
-        logger.LogUserRegistered(createdUser.Username);
+        logger.LogUserRegistered(createdUser.Name);
 
         // Enviar email de verificación en background
         _ = Task.Run(async () =>
         {
             try
             {
-                await emailService.SendEmailVerificationAsync(createdUser.Email, createdUser.Username, emailVerificationToken);
+                await emailService.SendEmailVerificationAsync(createdUser.Email, createdUser.Name, emailVerificationToken);
                 logger.LogInformation("Verification email sent");
             }
             catch (Exception ex)
@@ -159,7 +118,7 @@ public class AuthService(
         else
         {
             // Es un username
-            user = await userRepository.GetByUsernameAsync(loginDto.EmailOrUsername);
+            user = await userRepository.GetByNameAsync(loginDto.EmailOrUsername);
         }
 
         // Verificar si el usuario existe
@@ -170,7 +129,7 @@ public class AuthService(
         }
 
         // Verificar si el usuario está activo
-        if (!user.Status)
+        if (!user.IsActive)
         {
             logger.LogFailedLoginAttempt();
             throw new UnauthorizedAccessException("User account is disabled");
@@ -208,12 +167,10 @@ public class AuthService(
             Id = user.Id,
             Name = user.Name,
             Surname = user.Surname,
-            Username = user.Username,
             Email = user.Email,
-            ProfilePicture = user.UserProfile?.ProfilePictureUrl ?? string.Empty,
-            Phone = user.UserProfile?.Phone ?? string.Empty,
+            Phone = user.Phone,
             Role = userRole,
-            Status = user.Status,
+            IsActive = user.IsActive,
             IsEmailVerified = user.UserEmail?.EmailVerified ?? false,
             CreatedAt = user.CreatedAt,
             UpdatedAt = user.UpdatedAt
@@ -225,8 +182,7 @@ public class AuthService(
         return new UserDetailsDto
         {
             Id = user.Id,
-            Username = user.Username,
-            ProfilePicture = user.UserProfile?.ProfilePictureUrl ?? string.Empty,
+            Name = user.Name,
             Role = user.UserRoles.FirstOrDefault()?.Role?.Name ?? RoleConstants.USER_ROLE
         };
     }
@@ -244,7 +200,7 @@ public class AuthService(
         }
 
         user.UserEmail.EmailVerified = true;
-        user.Status = true;
+        user.IsActive = true;
         user.UserEmail.EmailVerificationToken = null;
         user.UserEmail.EmailVerificationTokenExpiry = null;
 
@@ -253,14 +209,14 @@ public class AuthService(
         // Enviar email de bienvenida
         try
         {
-            await emailService.SendWelcomeEmailAsync(user.Email, user.Username);
+            await emailService.SendWelcomeEmailAsync(user.Email, user.Name);
         }
         catch (Exception ex)
         {
             logger.LogError(ex, "Failed to send welcome email to {Email}", user.Email);
         }
 
-        logger.LogInformation("Email verified successfully for user {Username}", user.Username);
+        logger.LogInformation("Email verified successfully for user {Name}", user.Name);
 
         return new EmailResponseDto
         {
@@ -307,7 +263,7 @@ public class AuthService(
         // Enviar email
         try
         {
-            await emailService.SendEmailVerificationAsync(user.Email, user.Username, newToken);
+            await emailService.SendEmailVerificationAsync(user.Email, user.Name, newToken);
             return new EmailResponseDto
             {
                 Success = true,
@@ -364,7 +320,7 @@ public class AuthService(
         // Enviar email
         try
         {
-            await emailService.SendPasswordResetAsync(user.Email, user.Username, resetToken);
+            await emailService.SendPasswordResetAsync(user.Email, user.Name, resetToken);
             logger.LogInformation("Password reset email sent to {Email}", user.Email);
         }
         catch (Exception ex)
@@ -400,7 +356,7 @@ public class AuthService(
 
         await userRepository.UpdateAsync(user);
 
-        logger.LogInformation("Password reset successfully for user {Username}", user.Username);
+        logger.LogInformation("Password reset successfully for user {Name}", user.Name);
 
         return new EmailResponseDto
         {
