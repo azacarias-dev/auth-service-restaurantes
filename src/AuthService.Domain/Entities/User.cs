@@ -37,6 +37,12 @@ public class User
     [Required(ErrorMessage = "El estado es requerido.")]
     public bool IsActive { get; set; } = true;
 
+    [Required]
+    public DateTime CreatedAt {get; set;}
+
+    [Required]
+    public DateTime UpdatedAt {get; set;}
+
     public ICollection<UserRole> UserRoles { get; set; } = [];
     public UserEmail UserEmail { get; set; } = null!;
     public UserPasswordReset UserPasswordReset { get; set; } = null!;

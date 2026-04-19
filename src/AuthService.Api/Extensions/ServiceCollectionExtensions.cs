@@ -1,27 +1,47 @@
+using AuthService.Application.Interfaces;
+using AuthService.Application.Services;
 using AuthService.Domain.Entities;
 using AuthService.Domain.Constants;
 using AuthService.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
-using AuthService.Application.Interfaces;
-using AuthService.Application.Services;
+using AuthService.Domain.Interfaces;
+using AuthService.Persistence.Repositories;
+using System.Reflection;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
-namespace AuthService.Api.Extensions;
-
-public static class ServiceCollectionExtensions
+namespace AuthService.Api.Extensions
 {
-    public static IServiceCollection AddApplicationServices(this IServiceCollection services, 
-    IConfiguration configuration) 
+    public static class ServiceCollectionExtensions
     {
-        // Se registra el ApplicationDbContext en el contenedor de servicios utilizando la cadena de conexión definida en el archivo de configuración (appsettings.json) bajo la clave "DefaultConnection". Se utiliza el proveedor de base de datos Npgsql para PostgreSQL y se configura para usar la convención de nomenclatura en snake_case.
-        services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"))
-            .UseSnakeCaseNamingConvention());
-        
-        // Se registra el servicio de inicialización de datos (DataSeeder) en el contenedor de servicios con un alcance transitorio (Transient), lo que significa que se creará una nueva instancia del servicio cada vez que se solicite.
-        services.AddScoped<IEmailService, EmailService>();
-        
-        services.AddHealthChecks();
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"))
+                       .UseSnakeCaseNamingConvention();  // Aplicar aquí sobre el DbContextOptionsBuilder
+            });
 
-        return services;
+            // Configure application services <------ ACTUALIZACIÓN
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IAuthService, Application.Services.AuthService>();
+            services.AddScoped<IUserManagementService, UserManagementService>();
+            services.AddScoped<IPasswordHashService, PasswordHashService>();
+            services.AddScoped<IJwtTokenService, JwtTokenService>();
+        
+
+            services.AddScoped<IEmailService, EmailService>();
+            services.AddHealthChecks();
+            return services;
+        }
+        public static IServiceCollection AddApiDocumentation(this IServiceCollection services)
+{
+    services.AddEndpointsApiExplorer();
+    services.AddSwaggerGen();
+
+    return services;
+}
     }
+    
 }

@@ -1,5 +1,5 @@
 using AuthService.Domain.Entities;
-using AuthService.Persistence.Data;
+using AuthService.Domain.Constants;
 using AuthService.Application.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,93 +9,71 @@ public static class DataSeeder
 {
     public static async Task SeedAsync(ApplicationDbContext context)
     {
-        await context.Database.MigrateAsync();
-        
-        // CREAR ROLES
-        if (!await context.Roles.AnyAsync())
+
+        // Verificar si ya existen roles
+        if (!context.Roles.Any())
         {
-            var adminRole = new Role
+            var roles = new List<Role>
             {
-                Id = UuidGenerator.GenerateShortUUID(),
-                Name = "Admin",
-                CreatedAt = DateTime.UtcNow,
-                UpdatedAt = DateTime.UtcNow
+                new() {
+                    Id = UuidGenerator.GenerateRoleId(),
+                        Name = RoleConstants.ADMIN_ROLE
+                },
+                new() {
+                    Id = UuidGenerator.GenerateRoleId(),
+                        Name = RoleConstants.USER_ROLE
+                }
             };
-
-            var userRole = new Role
-            {
-                Id = UuidGenerator.GenerateShortUUID(),
-                Name = "User",
-                CreatedAt = DateTime.UtcNow,
-                UpdatedAt = DateTime.UtcNow
-            };
-
-            await context.Roles.AddRangeAsync(adminRole, userRole);
+ 
+            await context.Roles.AddRangeAsync(roles);
             await context.SaveChangesAsync();
         }
-
-
-        // CREAR ADMIN COMO ROL
-        var adminEmail = "ADMIN01@GMAIL.COM";
-
-        var existingUser = await context.Users
-            .FirstOrDefaultAsync(u => u.Email == adminEmail);
-
-        if (existingUser != null)
-            return;
-
-        var adminUser = new User
+ 
+        // Seed de un usuario administrador por defecto SOLO si no existen usuarios todavía
+        if (!await context.Users.AnyAsync())
         {
-            Id = UuidGenerator.GenerateShortUUID(),
-            Name = "ADMIN01",
-            Surname = "ADMIN01",
-            Email = adminEmail,
-            Address = "SYSTEM ADDRESS",
-            Phone = "00000000",
-            IsActive = true
-        };
-
-        await context.Users.AddAsync(adminUser);
-        await context.SaveChangesAsync();
-
-        // ASIGNAR ROL ADMIN
-        var adminRoleDb = await context.Roles
-            .FirstOrDefaultAsync(r => r.Name == "Admin");
-
-        if (adminRoleDb != null)
-        {
-            var userRole = new UserRole
+            // Buscar rol admin existente
+            var adminRole = await context.Roles.FirstOrDefaultAsync(r => r.Name == RoleConstants.ADMIN_ROLE);
+            if (adminRole != null)
             {
-                Id = UuidGenerator.GenerateShortUUID(),
-                UserId = adminUser.Id,
-                RoleId = adminRoleDb.Id,
-                AssignedAt = DateTime.UtcNow,
-                CreatedAt = DateTime.UtcNow,
-                UpdatedAt = DateTime.UtcNow
-            };
-
-            await context.UserRoles.AddAsync(userRole);
+                //var passwordHasher = new PasswordHashService();
+ 
+                var userId = UuidGenerator.GenerateUserId();
+                var profileId = UuidGenerator.GenerateUserId();
+                var emailId = UuidGenerator.GenerateUserId();
+                var userRoleId = UuidGenerator.GenerateUserId();
+ 
+                var adminUser = new User
+                {
+                    Id = userId,
+                    Name = "Admin",
+                    Surname = "User",
+                    Email = "admin@ksports.local",
+                    //Password = passwordHasher.HashPassword("Admin1234!"),
+                    Password = "12345678",
+                    IsActive = true,
+                    UserEmail = new UserEmail
+                    {
+                        Id = emailId,
+                        UserId = userId,
+                        EmailVerified = true,
+                        EmailVerificationToken = null,
+                        EmailVerificationTokenExpiry = null
+                    },
+                    UserRoles =
+                    [
+                        new UserRole
+                        {
+                            Id = userRoleId,
+                            UserId = userId,
+                            RoleId = adminRole.Id
+                        }
+                    ]
+                };
+ 
+                await context.Users.AddAsync(adminUser);
+                await context.SaveChangesAsync();
+            }
         }
-
-        // CREAR USER EMAIL
-        var userEmail = new UserEmail
-        {
-            Id = UuidGenerator.GenerateShortUUID(),
-            UserId = adminUser.Id,
-            EmailVerified = true
-        };
-
-        await context.UserEmails.AddAsync(userEmail);
-
-        // CREAR PASSWORD RESET
-        var passwordReset = new UserPasswordReset
-        {
-            Id = UuidGenerator.GenerateShortUUID(),
-            UserId = adminUser.Id
-        };
-
-        await context.UserPasswordResets.AddAsync(passwordReset);
-
-        await context.SaveChangesAsync();
     }
 }

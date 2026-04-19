@@ -1,0 +1,302 @@
+[2026-04-19 11:24:36 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-04-19 11:24:40 ERR] An error occurred while initializing the database {"SourceContext":"Program"}
+Npgsql.NpgsqlException (0x80004005): Failed to connect to 127.0.0.1:5435
+ ---> System.Net.Sockets.SocketException (10061): No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at Npgsql.TaskTimeoutAndCancellation.ExecuteAsync(Func`2 getTaskFunc, NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.ConnectAsync(NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.ConnectAsync(NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.RawOpen(SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.UnpooledDataSource.Get(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlDatabaseCreator.Exists(Boolean async, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlDatabaseCreator.Exists(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabaseCreator.EnsureCreatedAsync(CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabaseCreator.EnsureCreatedAsync(CancellationToken cancellationToken)
+   at Program.<Main>$(String[] args) in C:\Users\aless\Documents\Portfolio\auth-service-restaurantes\src\AuthService.Api\Program.cs:line 183
+[2026-04-19 11:42:25 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-04-19 11:42:26 INF] Database ready. Running seed data... {"SourceContext":"Program"}
+[2026-04-19 11:42:26 ERR] Failed executing DbCommand (9ms) [Parameters=[@__adminEmail_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT u.id, u.address, u.created_at, u.email, u.is_active, u.name, u.password, u.phone, u.surname, u.updated_at
+FROM "user" AS u
+WHERE u.email = @__adminEmail_0
+LIMIT 1 {"EventId":{"Id":20102,"Name":"Microsoft.EntityFrameworkCore.Database.Command.CommandError"},"SourceContext":"Microsoft.EntityFrameworkCore.Database.Command"}
+[2026-04-19 11:42:26 ERR] An exception occurred while iterating over the results of a query for context type 'AuthService.Persistence.Data.ApplicationDbContext'.
+Npgsql.PostgresException (0x80004005): 42703: column u.created_at does not exist
+
+POSITION: 25
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.created_at does not exist
+    Position: 25
+    File: parse_relation.c
+    Line: 3722
+    Routine: errorMissingColumn {"EventId":{"Id":10100,"Name":"Microsoft.EntityFrameworkCore.Query.QueryIterationFailed"},"SourceContext":"Microsoft.EntityFrameworkCore.Query"}
+Npgsql.PostgresException (0x80004005): 42703: column u.created_at does not exist
+
+POSITION: 25
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.created_at does not exist
+    Position: 25
+    File: parse_relation.c
+    Line: 3722
+    Routine: errorMissingColumn
+[2026-04-19 11:42:26 ERR] An error occurred while initializing the database {"SourceContext":"Program"}
+Npgsql.PostgresException (0x80004005): 42703: column u.created_at does not exist
+
+POSITION: 25
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at AuthService.Persistence.Data.DataSeeder.SeedAsync(ApplicationDbContext context) in C:\Users\aless\Documents\Portfolio\auth-service-restaurantes\src\AuthService.Persistence\Data\DataSeeder.cs:line 41
+   at Program.<Main>$(String[] args) in C:\Users\aless\Documents\Portfolio\auth-service-restaurantes\src\AuthService.Api\Program.cs:line 186
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.created_at does not exist
+    Position: 25
+    File: parse_relation.c
+    Line: 3722
+    Routine: errorMissingColumn
+[2026-04-19 11:50:20 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-04-19 11:50:21 INF] Database ready. Running seed data... {"SourceContext":"Program"}
+[2026-04-19 11:50:21 INF] Database initialization completed successfully {"SourceContext":"Program"}
+[2026-04-19 11:50:21 INF] AuthService API is running at http://localhost:5285. Health endpoint: http://localhost:5285/health {"SourceContext":"Program"}
+[2026-04-19 11:50:35 WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNKU7GKI3ERQ:00000001","RequestPath":"/health","ConnectionId":"0HNKU7GKI3ERQ"}
+[2026-04-19 11:50:35 INF] HTTP GET /health responded 200 in 71.9719 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU7GKI3ERQ:00000001","ConnectionId":"0HNKU7GKI3ERQ"}
+[2026-04-19 11:53:47 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-04-19 11:53:48 INF] Database ready. Running seed data... {"SourceContext":"Program"}
+[2026-04-19 11:53:49 INF] Database initialization completed successfully {"SourceContext":"Program"}
+[2026-04-19 11:53:49 INF] AuthService API is running at http://localhost:5285. Health endpoint: http://localhost:5285/health {"SourceContext":"Program"}
+[2026-04-19 11:54:26 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-04-19 11:54:27 INF] Database ready. Running seed data... {"SourceContext":"Program"}
+[2026-04-19 11:54:27 INF] Database initialization completed successfully {"SourceContext":"Program"}
+[2026-04-19 11:54:27 INF] AuthService API is running at http://localhost:5285. Health endpoint: http://localhost:5285/health {"SourceContext":"Program"}
+[2026-04-19 11:59:14 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-04-19 11:59:15 INF] Database ready. Running seed data... {"SourceContext":"Program"}
+[2026-04-19 11:59:15 INF] Database initialization completed successfully {"SourceContext":"Program"}
+[2026-04-19 11:59:15 INF] AuthService API is running at http://localhost:5285. Health endpoint: http://localhost:5285/health {"SourceContext":"Program"}
+[2026-04-19 11:59:23 WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNKU7LHSTSIM:00000001","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNKU7LHSTSIM"}
+[2026-04-19 11:59:23 ERR] An unhandled exception occurred {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNKU7LHSTSIM:00000001","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNKU7LHSTSIM"}
+System.InvalidOperationException: Unable to resolve service for type 'AuthService.Application.Interfaces.IAuthService' while attempting to activate 'AuthService.Api.Controllers.AuthController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method91(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at AuthService.Api.Middlewares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\aless\Documents\Portfolio\auth-service-restaurantes\src\AuthService.Api\Middlewares\GlobalExceptionMiddleware.cs:line 18
+[2026-04-19 11:59:23 INF] HTTP POST /api/v1/auth/register responded 400 in 126.8647 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU7LHSTSIM:00000001","ConnectionId":"0HNKU7LHSTSIM"}
+[2026-04-19 12:00:49 INF] HTTP POST /api/v1/register responded 404 in 1.1214 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU7LHSTSIO:00000001","ConnectionId":"0HNKU7LHSTSIO"}
+[2026-04-19 12:01:00 ERR] An unhandled exception occurred {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNKU7LHSTSIO:00000002","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNKU7LHSTSIO"}
+System.InvalidOperationException: Unable to resolve service for type 'AuthService.Application.Interfaces.IAuthService' while attempting to activate 'AuthService.Api.Controllers.AuthController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method91(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at AuthService.Api.Middlewares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\aless\Documents\Portfolio\auth-service-restaurantes\src\AuthService.Api\Middlewares\GlobalExceptionMiddleware.cs:line 18
+[2026-04-19 12:01:00 INF] HTTP POST /api/v1/auth/register responded 400 in 8.0530 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU7LHSTSIO:00000002","ConnectionId":"0HNKU7LHSTSIO"}
+[2026-04-19 12:04:40 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-04-19 12:04:40 INF] Database ready. Running seed data... {"SourceContext":"Program"}
+[2026-04-19 12:04:41 INF] Database initialization completed successfully {"SourceContext":"Program"}
+[2026-04-19 12:04:41 INF] AuthService API is running at http://localhost:5285. Health endpoint: http://localhost:5285/health {"SourceContext":"Program"}
+[2026-04-19 12:04:43 WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNKU7OH88P6U:00000001","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNKU7OH88P6U"}
+[2026-04-19 12:04:43 ERR] An unhandled exception occurred {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNKU7OH88P6U:00000001","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNKU7OH88P6U"}
+System.InvalidOperationException: Default role 'USER_ROLE' not found. Ensure seeding runs before registration.
+   at AuthService.Application.Services.AuthService.RegisterAsync(RegisterDto registerDto) in C:\Users\aless\Documents\Portfolio\auth-service-restaurantes\src\AuthService.Application\Services\AuthService.cs:line 47
+   at AuthService.Api.Controllers.AuthController.Register(RegisterDto registerDto) in C:\Users\aless\Documents\Portfolio\auth-service-restaurantes\src\AuthService.Api\Controllers\AuthController.cs:line 74
+   at lambda_method87(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at AuthService.Api.Middlewares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\aless\Documents\Portfolio\auth-service-restaurantes\src\AuthService.Api\Middlewares\GlobalExceptionMiddleware.cs:line 18
+[2026-04-19 12:04:44 INF] HTTP POST /api/v1/auth/register responded 404 in 236.1671 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU7OH88P6U:00000001","ConnectionId":"0HNKU7OH88P6U"}
+[2026-04-19 12:14:02 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-04-19 12:14:02 INF] Database ready. Running seed data... {"SourceContext":"Program"}
+[2026-04-19 12:14:03 INF] Database initialization completed successfully {"SourceContext":"Program"}
+[2026-04-19 12:14:03 INF] AuthService API is running at http://localhost:5285. Health endpoint: http://localhost:5285/health {"SourceContext":"Program"}
+[2026-04-19 12:14:06 WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNKU7TOQDL64:00000001","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNKU7TOQDL64"}
+[2026-04-19 12:14:06 ERR] An unhandled exception occurred {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNKU7TOQDL64:00000001","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNKU7TOQDL64"}
+System.InvalidOperationException: Default role 'USER_ROLE' not found. Ensure seeding runs before registration.
+   at AuthService.Application.Services.AuthService.RegisterAsync(RegisterDto registerDto) in C:\Users\aless\Documents\Portfolio\auth-service-restaurantes\src\AuthService.Application\Services\AuthService.cs:line 47
+   at AuthService.Api.Controllers.AuthController.Register(RegisterDto registerDto) in C:\Users\aless\Documents\Portfolio\auth-service-restaurantes\src\AuthService.Api\Controllers\AuthController.cs:line 74
+   at lambda_method18(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at AuthService.Api.Middlewares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\aless\Documents\Portfolio\auth-service-restaurantes\src\AuthService.Api\Middlewares\GlobalExceptionMiddleware.cs:line 18
+[2026-04-19 12:14:06 INF] HTTP POST /api/v1/auth/register responded 404 in 376.6263 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU7TOQDL64:00000001","ConnectionId":"0HNKU7TOQDL64"}
+[2026-04-19 12:20:43 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-04-19 12:20:44 INF] Database ready. Running seed data... {"SourceContext":"Program"}
+[2026-04-19 12:20:44 INF] Database initialization completed successfully {"SourceContext":"Program"}
+[2026-04-19 12:20:44 INF] AuthService API is running at http://localhost:5285. Health endpoint: http://localhost:5285/health {"SourceContext":"Program"}
+[2026-04-19 12:20:48 WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNKU81GRT3AJ:00000001","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNKU81GRT3AJ"}
+[2026-04-19 12:20:49 INF] User Alessandro registered successfully {"EventId":{"Id":1001,"Name":"LogUserRegistered"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"09cb5e72-cde7-404d-8601-be3d14ebdfc6","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNKU81GRT3AJ:00000001","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNKU81GRT3AJ"}
+[2026-04-19 12:20:49 INF] HTTP POST /api/v1/auth/register responded 201 in 495.3292 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU81GRT3AJ:00000001","ConnectionId":"0HNKU81GRT3AJ"}
+[2026-04-19 12:20:52 INF] Email sent successfully {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"09cb5e72-cde7-404d-8601-be3d14ebdfc6","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNKU81GRT3AJ:00000001","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNKU81GRT3AJ"}
+[2026-04-19 12:20:52 INF] Email pipeline completed {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"09cb5e72-cde7-404d-8601-be3d14ebdfc6","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNKU81GRT3AJ:00000001","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNKU81GRT3AJ"}
+[2026-04-19 12:20:52 INF] Email processed {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"09cb5e72-cde7-404d-8601-be3d14ebdfc6","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNKU81GRT3AJ:00000001","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNKU81GRT3AJ"}
+[2026-04-19 12:20:52 INF] Verification email sent {"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"09cb5e72-cde7-404d-8601-be3d14ebdfc6","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNKU81GRT3AJ:00000001","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNKU81GRT3AJ"}
+[2026-04-19 12:23:36 INF] HTTP POST /api/v1/auth/login/token=JpfVBSFGO3Ji6tPYdD_C8izAHljEa-ZeFBsU99RdYmg responded 404 in 1.0806 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU81GRT3AL:00000001","ConnectionId":"0HNKU81GRT3AL"}
+[2026-04-19 12:25:42 INF] HTTP POST /api/v1/auth/login/token=JpfVBSFGO3Ji6tPYdD_C8izAHljEa-ZeFBsU99RdYmg responded 404 in 1.4824 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU81GRT3AN:00000001","ConnectionId":"0HNKU81GRT3AN"}
+[2026-04-19 12:25:46 INF] HTTP POST /api/v1/auth/login/token=JpfVBSFGO3Ji6tPYdD_C8izAHljEa-ZeFBsU99RdYmg responded 404 in 0.1430 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU81GRT3AN:00000002","ConnectionId":"0HNKU81GRT3AN"}
+[2026-04-19 12:26:06 INF] HTTP POST /api/v1/auth/verify-email responded 415 in 32.7451 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU81GRT3AN:00000003","ConnectionId":"0HNKU81GRT3AN"}
+[2026-04-19 12:26:22 INF] HTTP POST /api/v1/auth/verify-email responded 200 in 88.4575 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU81GRT3AN:00000004","ConnectionId":"0HNKU81GRT3AN"}
+[2026-04-19 12:28:05 WRN] Failed login attempt {"EventId":{"Id":1003,"Name":"LogFailedLoginAttempt"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"6bd1af49-2698-4e1f-8ae6-d75e08067ba1","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNKU81GRT3AP:00000001","RequestPath":"/api/v1/auth/login/","ConnectionId":"0HNKU81GRT3AP"}
+[2026-04-19 12:28:05 ERR] An unhandled exception occurred {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNKU81GRT3AP:00000001","RequestPath":"/api/v1/auth/login/","ConnectionId":"0HNKU81GRT3AP"}
+System.UnauthorizedAccessException: User account is disabled
+   at AuthService.Application.Services.AuthService.LoginAsync(LoginDto loginDto) in C:\Users\aless\Documents\Portfolio\auth-service-restaurantes\src\AuthService.Application\Services\AuthService.cs:line 133
+   at AuthService.Api.Controllers.AuthController.Login(LoginDto loginDto) in C:\Users\aless\Documents\Portfolio\auth-service-restaurantes\src\AuthService.Api\Controllers\AuthController.cs:line 83
+   at lambda_method394(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at AuthService.Api.Middlewares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\aless\Documents\Portfolio\auth-service-restaurantes\src\AuthService.Api\Middlewares\GlobalExceptionMiddleware.cs:line 18
+[2026-04-19 12:28:05 INF] HTTP POST /api/v1/auth/login/ responded 401 in 46.9458 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU81GRT3AP:00000001","ConnectionId":"0HNKU81GRT3AP"}
+[2026-04-19 12:28:36 WRN] Failed login attempt {"EventId":{"Id":1003,"Name":"LogFailedLoginAttempt"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"6bd1af49-2698-4e1f-8ae6-d75e08067ba1","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNKU81GRT3AP:00000002","RequestPath":"/api/v1/auth/login/","ConnectionId":"0HNKU81GRT3AP"}
+[2026-04-19 12:28:36 ERR] An unhandled exception occurred {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNKU81GRT3AP:00000002","RequestPath":"/api/v1/auth/login/","ConnectionId":"0HNKU81GRT3AP"}
+System.UnauthorizedAccessException: User account is disabled
+   at AuthService.Application.Services.AuthService.LoginAsync(LoginDto loginDto) in C:\Users\aless\Documents\Portfolio\auth-service-restaurantes\src\AuthService.Application\Services\AuthService.cs:line 133
+   at AuthService.Api.Controllers.AuthController.Login(LoginDto loginDto) in C:\Users\aless\Documents\Portfolio\auth-service-restaurantes\src\AuthService.Api\Controllers\AuthController.cs:line 83
+   at lambda_method394(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at AuthService.Api.Middlewares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\aless\Documents\Portfolio\auth-service-restaurantes\src\AuthService.Api\Middlewares\GlobalExceptionMiddleware.cs:line 18
+[2026-04-19 12:28:36 INF] HTTP POST /api/v1/auth/login/ responded 401 in 11.9823 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU81GRT3AP:00000002","ConnectionId":"0HNKU81GRT3AP"}
+[2026-04-19 12:28:53 INF] HTTP POST /api/v1/auth/verify-email responded 200 in 3.5150 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU81GRT3AP:00000003","ConnectionId":"0HNKU81GRT3AP"}
+[2026-04-19 12:29:31 INF] Email sent successfully {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"0eca5b7f-83ef-4194-995a-9a0b2ff31a3e","ActionName":"AuthService.Api.Controllers.AuthController.VerifyEmail (AuthService.Api)","RequestId":"0HNKU81GRT3AP:00000004","RequestPath":"/api/v1/auth/verify-email","ConnectionId":"0HNKU81GRT3AP"}
+[2026-04-19 12:29:31 INF] Email pipeline completed {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"0eca5b7f-83ef-4194-995a-9a0b2ff31a3e","ActionName":"AuthService.Api.Controllers.AuthController.VerifyEmail (AuthService.Api)","RequestId":"0HNKU81GRT3AP:00000004","RequestPath":"/api/v1/auth/verify-email","ConnectionId":"0HNKU81GRT3AP"}
+[2026-04-19 12:29:31 INF] Email processed {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"0eca5b7f-83ef-4194-995a-9a0b2ff31a3e","ActionName":"AuthService.Api.Controllers.AuthController.VerifyEmail (AuthService.Api)","RequestId":"0HNKU81GRT3AP:00000004","RequestPath":"/api/v1/auth/verify-email","ConnectionId":"0HNKU81GRT3AP"}
+[2026-04-19 12:29:31 INF] Email verified successfully for user Alessandro {"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"0eca5b7f-83ef-4194-995a-9a0b2ff31a3e","ActionName":"AuthService.Api.Controllers.AuthController.VerifyEmail (AuthService.Api)","RequestId":"0HNKU81GRT3AP:00000004","RequestPath":"/api/v1/auth/verify-email","ConnectionId":"0HNKU81GRT3AP"}
+[2026-04-19 12:29:31 INF] HTTP POST /api/v1/auth/verify-email responded 200 in 2154.9959 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU81GRT3AP:00000004","ConnectionId":"0HNKU81GRT3AP"}
+[2026-04-19 12:29:35 INF] User login succeeded {"EventId":{"Id":1002,"Name":"LogUserLoggedIn"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"6bd1af49-2698-4e1f-8ae6-d75e08067ba1","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNKU81GRT3AP:00000005","RequestPath":"/api/v1/auth/login/","ConnectionId":"0HNKU81GRT3AP"}
+[2026-04-19 12:29:35 INF] HTTP POST /api/v1/auth/login/ responded 200 in 331.7956 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU81GRT3AP:00000005","ConnectionId":"0HNKU81GRT3AP"}
+[2026-04-19 12:30:56 INF] HTTP POST /api/v1/auth/profile/ responded 405 in 7.9093 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU81GRT3AR:00000001","ConnectionId":"0HNKU81GRT3AR"}
+[2026-04-19 12:31:02 INF] HTTP GET /api/v1/auth/profile/ responded 401 in 5.6911 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU81GRT3AR:00000002","ConnectionId":"0HNKU81GRT3AR"}
+[2026-04-19 12:31:40 INF] HTTP GET /api/v1/auth/profile/ responded 401 in 1.9021 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU81GRT3AR:00000003","ConnectionId":"0HNKU81GRT3AR"}
+[2026-04-19 12:32:24 INF] HTTP GET /api/v1/auth/profile/ responded 401 in 0.8811 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU81GRT3AR:00000004","ConnectionId":"0HNKU81GRT3AR"}
+[2026-04-19 12:32:31 INF] HTTP GET /api/v1/auth/profile/ responded 401 in 0.2225 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU81GRT3AR:00000005","ConnectionId":"0HNKU81GRT3AR"}
+[2026-04-19 12:32:34 INF] HTTP GET /api/v1/auth/profile/ responded 401 in 0.2078 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU81GRT3AR:00000006","ConnectionId":"0HNKU81GRT3AR"}
+[2026-04-19 12:33:00 INF] HTTP GET /api/v1/auth/profile/ responded 200 in 47.3717 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU81GRT3AR:00000007","ConnectionId":"0HNKU81GRT3AR"}
+[2026-04-19 12:34:42 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-04-19 12:34:42 INF] Database ready. Running seed data... {"SourceContext":"Program"}
+[2026-04-19 12:34:42 INF] Database initialization completed successfully {"SourceContext":"Program"}
+[2026-04-19 12:34:43 INF] AuthService API is running at http://localhost:5285. Health endpoint: http://localhost:5285/health {"SourceContext":"Program"}
+[2026-04-19 12:35:29 WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNKU89N89OKV:00000001","RequestPath":"/api/v1/auth/profile/","ConnectionId":"0HNKU89N89OKV"}
+[2026-04-19 12:35:29 INF] HTTP GET /api/v1/auth/profile/ responded 200 in 363.7780 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU89N89OKV:00000001","ConnectionId":"0HNKU89N89OKV"}
+[2026-04-19 12:36:13 INF] HTTP POST /api/v1/auth/register responded 400 in 72.0679 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU89N89OKV:00000002","ConnectionId":"0HNKU89N89OKV"}
+[2026-04-19 12:36:32 INF] User Gerardo registered successfully {"EventId":{"Id":1001,"Name":"LogUserRegistered"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"a4d7d9bf-fabf-45cb-95b8-bb13458a4fd6","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNKU89N89OKV:00000003","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNKU89N89OKV"}
+[2026-04-19 12:36:32 INF] HTTP POST /api/v1/auth/register responded 201 in 359.2672 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU89N89OKV:00000003","ConnectionId":"0HNKU89N89OKV"}
+[2026-04-19 12:36:34 INF] Email sent successfully {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"a4d7d9bf-fabf-45cb-95b8-bb13458a4fd6","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNKU89N89OKV:00000003","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNKU89N89OKV"}
+[2026-04-19 12:36:34 INF] Email pipeline completed {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"a4d7d9bf-fabf-45cb-95b8-bb13458a4fd6","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNKU89N89OKV:00000003","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNKU89N89OKV"}
+[2026-04-19 12:36:34 INF] Email processed {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"a4d7d9bf-fabf-45cb-95b8-bb13458a4fd6","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNKU89N89OKV:00000003","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNKU89N89OKV"}
+[2026-04-19 12:36:34 INF] Verification email sent {"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"a4d7d9bf-fabf-45cb-95b8-bb13458a4fd6","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNKU89N89OKV:00000003","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNKU89N89OKV"}
+[2026-04-19 12:37:52 INF] HTTP POST /api/v1/auth/verify-email responded 415 in 9.6711 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU89N89OL1:00000001","ConnectionId":"0HNKU89N89OL1"}
+[2026-04-19 12:38:10 INF] Email sent successfully {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"e61977bd-f0a1-4000-b0f3-a74e43713a28","ActionName":"AuthService.Api.Controllers.AuthController.VerifyEmail (AuthService.Api)","RequestId":"0HNKU89N89OL1:00000002","RequestPath":"/api/v1/auth/verify-email","ConnectionId":"0HNKU89N89OL1"}
+[2026-04-19 12:38:10 INF] Email pipeline completed {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"e61977bd-f0a1-4000-b0f3-a74e43713a28","ActionName":"AuthService.Api.Controllers.AuthController.VerifyEmail (AuthService.Api)","RequestId":"0HNKU89N89OL1:00000002","RequestPath":"/api/v1/auth/verify-email","ConnectionId":"0HNKU89N89OL1"}
+[2026-04-19 12:38:10 INF] Email processed {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"e61977bd-f0a1-4000-b0f3-a74e43713a28","ActionName":"AuthService.Api.Controllers.AuthController.VerifyEmail (AuthService.Api)","RequestId":"0HNKU89N89OL1:00000002","RequestPath":"/api/v1/auth/verify-email","ConnectionId":"0HNKU89N89OL1"}
+[2026-04-19 12:38:10 INF] Email verified successfully for user Gerardo {"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"e61977bd-f0a1-4000-b0f3-a74e43713a28","ActionName":"AuthService.Api.Controllers.AuthController.VerifyEmail (AuthService.Api)","RequestId":"0HNKU89N89OL1:00000002","RequestPath":"/api/v1/auth/verify-email","ConnectionId":"0HNKU89N89OL1"}
+[2026-04-19 12:38:10 INF] HTTP POST /api/v1/auth/verify-email responded 200 in 2244.8467 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU89N89OL1:00000002","ConnectionId":"0HNKU89N89OL1"}
+[2026-04-19 12:38:24 INF] User login succeeded {"EventId":{"Id":1002,"Name":"LogUserLoggedIn"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"8fc52e31-ec01-4008-a751-7a3eb5f7a2f1","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNKU89N89OL1:00000003","RequestPath":"/api/v1/auth/login/","ConnectionId":"0HNKU89N89OL1"}
+[2026-04-19 12:38:24 INF] HTTP POST /api/v1/auth/login/ responded 200 in 367.9851 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU89N89OL1:00000003","ConnectionId":"0HNKU89N89OL1"}
+[2026-04-19 12:38:34 INF] HTTP GET /api/v1/auth/profile/ responded 200 in 4.6606 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNKU89N89OL1:00000004","ConnectionId":"0HNKU89N89OL1"}
+[2026-04-19 12:42:28 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-04-19 12:42:29 INF] Database ready. Running seed data... {"SourceContext":"Program"}
+[2026-04-19 12:42:29 INF] Database initialization completed successfully {"SourceContext":"Program"}
+[2026-04-19 12:42:29 INF] AuthService API is running at http://localhost:5285. Health endpoint: http://localhost:5285/health {"SourceContext":"Program"}
