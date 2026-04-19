@@ -9,11 +9,6 @@ using AuthService.Persistence.Repositories;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using AuthService.Persistence.Data;
-using AuthService.Application.Interfaces;
-using AuthService.Application.Services;
-
-namespace AuthService.Api.Extensions;
 
 namespace AuthService.Api.Extensions
 {
@@ -27,13 +22,13 @@ namespace AuthService.Api.Extensions
                        .UseSnakeCaseNamingConvention();  // Aplicar aquí sobre el DbContextOptionsBuilder
             });
 
-        // Configure application services <------ ACTUALIZACIÓN
-        // services.AddScoped<IUserRepository, UserRepository>();
-        // services.AddScoped<IRoleRepository, RoleRepository>();
-        // services.AddScoped<IAuthService, Application.Services.AuthService>();
-        // services.AddScoped<IUserManagementService, UserManagementService>();
-        // services.AddScoped<IPasswordHashService, PasswordHashService>();
-        // services.AddScoped<IJwtTokenService, JwtTokenService>();
+            // Configure application services <------ ACTUALIZACIÓN
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IAuthService, Application.Services.AuthService>();
+            services.AddScoped<IUserManagementService, UserManagementService>();
+            services.AddScoped<IPasswordHashService, PasswordHashService>();
+            services.AddScoped<IJwtTokenService, JwtTokenService>();
         
 
             services.AddScoped<IEmailService, EmailService>();
