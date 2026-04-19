@@ -50,6 +50,16 @@ public class UserRepository(ApplicationDbContext context) : IUserRepository
         .FirstOrDefaultAsync(u => u.UserPasswordReset != null && u.UserPasswordReset.PasswordResetToken == token);
     }
 
+    public async Task<User?> GetByNameAsync(string name)
+    {
+        return await context.Users
+        .Include(u => u.UserEmail)
+        .Include(u => u.UserPasswordReset)
+        .Include(u => u.UserRoles)
+        .ThenInclude(ur => ur.Role)
+        .FirstOrDefaultAsync(u => EF.Functions.Like(u.Name, name));
+    }
+
     public async Task<User?> GetBySurnameAsync(string surname)
     {
         return await context.Users
@@ -78,6 +88,11 @@ public class UserRepository(ApplicationDbContext context) : IUserRepository
     public async Task<bool> ExistsByEmailAsync(string email)
     {
         return await context.Users.AnyAsync(u => EF.Functions.Like(u.Email, email));
+    }
+
+    public async Task<bool> ExistsByNameAsync(string name)
+    {
+        return await context.Users.AnyAsync(u => EF.Functions.Like(u.Name, name));
     }
 
     public async Task<bool> ExistsBySurnameAsync(string surname)
