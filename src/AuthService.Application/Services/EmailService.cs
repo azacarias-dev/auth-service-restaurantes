@@ -16,7 +16,7 @@ public class EmailService(IConfiguration configuration, ILogger<EmailService> lo
  
         var body = $@"
             <p>Hola {username},</p>
-            <p>Gracias por registrarte en Kinal Sport. Por favor, haz clic en el siguiente enlace para verificar tu email:</p>
+            <p>Gracias por registrarte en Pasto Kinaliani. Por favor, haz clic en el siguiente enlace para verificar tu email:</p>
             <p><a href='{verificationUrl}'>Verificar Email</a></p>
             <p>Si no te registraste, ignora este mensaje.</p>
             ";
@@ -41,10 +41,10 @@ public class EmailService(IConfiguration configuration, ILogger<EmailService> lo
  
     public async Task SendWelcomeEmailAsync(string email, string username)
     {
-        var subject = "Bienvenido a nuestra gestion de restaurantes!";
+        var subject = "Bienvenido a Pasto Kinaliani!";
  
         var body = $@"
-            <h2>Bienvenido a nuestra gestion de restaurantes, {username}!</h2>
+            <h2>Bienvenido a Pasto Kinaliani, {username}!</h2>
             <p>Tu cuenta ha sido verificada y activada exitosamente.</p>
             <p>Ahora puedes disfrutar de todas las funciones de nuestra plataforma.</p>
             <p>Si tienes alguna pregunta, no dudes en contactar a nuestro equipo de soporte.</p>
