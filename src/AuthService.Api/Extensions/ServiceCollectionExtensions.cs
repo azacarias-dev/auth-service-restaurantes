@@ -6,6 +6,14 @@ using AuthService.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 using AuthService.Domain.Interfaces;
 using AuthService.Persistence.Repositories;
+using System.Reflection;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+using AuthService.Persistence.Data;
+using AuthService.Application.Interfaces;
+using AuthService.Application.Services;
+
+namespace AuthService.Api.Extensions;
 
 namespace AuthService.Api.Extensions
 {
