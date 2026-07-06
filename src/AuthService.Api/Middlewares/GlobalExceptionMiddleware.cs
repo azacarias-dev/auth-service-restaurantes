@@ -19,7 +19,14 @@ public class GlobalExceptionMiddleware(RequestDelegate next, ILogger<GlobalExcep
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, "An unhandled exception occurred");
+            if (ex is UnauthorizedAccessException || ex is BusinessException)
+            {
+                logger.LogWarning(ex.Message);
+            }
+            else
+            {
+                logger.LogError(ex, "An unhandled exception occurred");
+            }
             await HandleExceptionAsync(context, ex);
         }
     }
@@ -37,11 +44,11 @@ public class GlobalExceptionMiddleware(RequestDelegate next, ILogger<GlobalExcep
                 Detail = businessEx.Message,
                 ErrorCode = businessEx.ErrorCode
             },
-            UnauthorizedAccessException => new ErrorResponse
+            UnauthorizedAccessException unauthEx => new ErrorResponse
             {
                 StatusCode = (int)HttpStatusCode.Unauthorized,
                 Title = "Unauthorized",
-                Detail = "Credenciales inválidas o permisos insuficientes"
+                Detail = unauthEx.Message == "User account is disabled" ? "La cuenta está deshabilitada o no ha sido verificada" : "Credenciales inválidas o permisos insuficientes"
             },
             ArgumentException argEx => new ErrorResponse
             {

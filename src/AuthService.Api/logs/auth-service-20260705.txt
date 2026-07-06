@@ -1,0 +1,292 @@
+[2026-07-05 18:34:36 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-07-05 18:34:36 INF] Database ready. Running seed data... {"SourceContext":"Program"}
+[2026-07-05 18:34:37 INF] Database initialization completed successfully {"SourceContext":"Program"}
+[2026-07-05 18:34:37 ERR] An exception occurred while trying to decrypt the element. {"EventId":{"Id":43,"Name":"ExceptionOccurredTryingToDecryptElement"},"SourceContext":"Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor"}
+System.Security.Cryptography.CryptographicException: Error occurred during a cryptographic operation.
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapiCore(Byte* pbProtectedData, UInt32 cbProtectedData, Byte* pbOptionalEntropy, UInt32 cbOptionalEntropy)
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapi(Byte[] protectedSecret)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor.Decrypt(XElement encryptedElement)
+[2026-07-05 18:34:37 ERR] An exception occurred while processing the key element '<key id="01087950-75e5-483d-bc9f-093add8c4f30" version="1" />'. {"EventId":{"Id":24,"Name":"ExceptionOccurredWhileProcessingTheKeyElement"},"SourceContext":"Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager"}
+System.Security.Cryptography.CryptographicException: Error occurred during a cryptographic operation.
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapiCore(Byte* pbProtectedData, UInt32 cbProtectedData, Byte* pbOptionalEntropy, UInt32 cbOptionalEntropy)
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapi(Byte[] protectedSecret)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor.Decrypt(XElement encryptedElement)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.XmlEncryptionExtensions.DecryptElement(XElement element, IActivator activator)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager.Microsoft.AspNetCore.DataProtection.KeyManagement.Internal.IInternalXmlKeyManager.DeserializeDescriptorFromKeyElement(XElement keyElement)
+[2026-07-05 18:34:37 WRN] Key {01087950-75e5-483d-bc9f-093add8c4f30} is ineligible to be the default key because its CreateEncryptor method failed. {"EventId":{"Id":12,"Name":"KeyIsIneligibleToBeTheDefaultKeyBecauseItsMethodFailed"},"SourceContext":"Microsoft.AspNetCore.DataProtection.KeyManagement.DefaultKeyResolver"}
+System.Security.Cryptography.CryptographicException: Error occurred during a cryptographic operation.
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapiCore(Byte* pbProtectedData, UInt32 cbProtectedData, Byte* pbOptionalEntropy, UInt32 cbOptionalEntropy)
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapi(Byte[] protectedSecret)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor.Decrypt(XElement encryptedElement)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.XmlEncryptionExtensions.DecryptElement(XElement element, IActivator activator)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager.Microsoft.AspNetCore.DataProtection.KeyManagement.Internal.IInternalXmlKeyManager.DeserializeDescriptorFromKeyElement(XElement keyElement)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.CngGcmAuthenticatedEncryptorFactory.CreateEncryptorInstance(IKey key)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyBase.CreateEncryptor()
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.DefaultKeyResolver.CanCreateAuthenticatedEncryptor(IKey key)
+[2026-07-05 18:34:37 WRN] Key {01087950-75e5-483d-bc9f-093add8c4f30} is ineligible to be the default key because its CreateEncryptor method failed. {"EventId":{"Id":12,"Name":"KeyIsIneligibleToBeTheDefaultKeyBecauseItsMethodFailed"},"SourceContext":"Microsoft.AspNetCore.DataProtection.KeyManagement.DefaultKeyResolver"}
+System.Security.Cryptography.CryptographicException: Error occurred during a cryptographic operation.
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapiCore(Byte* pbProtectedData, UInt32 cbProtectedData, Byte* pbOptionalEntropy, UInt32 cbOptionalEntropy)
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapi(Byte[] protectedSecret)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor.Decrypt(XElement encryptedElement)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.XmlEncryptionExtensions.DecryptElement(XElement element, IActivator activator)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager.Microsoft.AspNetCore.DataProtection.KeyManagement.Internal.IInternalXmlKeyManager.DeserializeDescriptorFromKeyElement(XElement keyElement)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+--- End of stack trace from previous location ---
+   at System.Lazy`1.CreateValue()
+   at Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.CngGcmAuthenticatedEncryptorFactory.CreateEncryptorInstance(IKey key)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyBase.CreateEncryptor()
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.DefaultKeyResolver.CanCreateAuthenticatedEncryptor(IKey key)
+[2026-07-05 18:34:37 ERR] An exception occurred while trying to decrypt the element. {"EventId":{"Id":43,"Name":"ExceptionOccurredTryingToDecryptElement"},"SourceContext":"Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor"}
+System.Security.Cryptography.CryptographicException: Error occurred during a cryptographic operation.
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapiCore(Byte* pbProtectedData, UInt32 cbProtectedData, Byte* pbOptionalEntropy, UInt32 cbOptionalEntropy)
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapi(Byte[] protectedSecret)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor.Decrypt(XElement encryptedElement)
+[2026-07-05 18:34:37 ERR] An exception occurred while processing the key element '<key id="4aba59dc-11cb-4ef4-8fb1-c5a53e96626e" version="1" />'. {"EventId":{"Id":24,"Name":"ExceptionOccurredWhileProcessingTheKeyElement"},"SourceContext":"Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager"}
+System.Security.Cryptography.CryptographicException: Error occurred during a cryptographic operation.
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapiCore(Byte* pbProtectedData, UInt32 cbProtectedData, Byte* pbOptionalEntropy, UInt32 cbOptionalEntropy)
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapi(Byte[] protectedSecret)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor.Decrypt(XElement encryptedElement)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.XmlEncryptionExtensions.DecryptElement(XElement element, IActivator activator)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager.Microsoft.AspNetCore.DataProtection.KeyManagement.Internal.IInternalXmlKeyManager.DeserializeDescriptorFromKeyElement(XElement keyElement)
+[2026-07-05 18:34:37 WRN] Key {4aba59dc-11cb-4ef4-8fb1-c5a53e96626e} is ineligible to be the default key because its CreateEncryptor method failed. {"EventId":{"Id":12,"Name":"KeyIsIneligibleToBeTheDefaultKeyBecauseItsMethodFailed"},"SourceContext":"Microsoft.AspNetCore.DataProtection.KeyManagement.DefaultKeyResolver"}
+System.Security.Cryptography.CryptographicException: Error occurred during a cryptographic operation.
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapiCore(Byte* pbProtectedData, UInt32 cbProtectedData, Byte* pbOptionalEntropy, UInt32 cbOptionalEntropy)
+   at Microsoft.AspNetCore.DataProtection.Cng.DpapiSecretSerializerHelper.UnprotectWithDpapi(Byte[] protectedSecret)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor.Decrypt(XElement encryptedElement)
+   at Microsoft.AspNetCore.DataProtection.XmlEncryption.XmlEncryptionExtensions.DecryptElement(XElement element, IActivator activator)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager.Microsoft.AspNetCore.DataProtection.KeyManagement.Internal.IInternalXmlKeyManager.DeserializeDescriptorFromKeyElement(XElement keyElement)
+   at System.Lazy`1.ViaFactory(LazyThreadSafetyMode mode)
+   at System.Lazy`1.ExecutionAndPublication(LazyHelper executionAndPublication, Boolean useDefaultConstructor)
+   at System.Lazy`1.CreateValue()
+   at Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.CngGcmAuthenticatedEncryptorFactory.CreateEncryptorInstance(IKey key)
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.KeyBase.CreateEncryptor()
+   at Microsoft.AspNetCore.DataProtection.KeyManagement.DefaultKeyResolver.CanCreateAuthenticatedEncryptor(IKey key)
+[2026-07-05 18:34:37 INF] AuthService API is running at http://localhost:5285. Health endpoint: http://localhost:5285/health {"SourceContext":"Program"}
+[2026-07-05 18:53:52 WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNMQV4667S9A:00000001","RequestPath":"/api/v1/Auth/users","ConnectionId":"0HNMQV4667S9A"}
+[2026-07-05 18:53:52 INF] HTTP OPTIONS /api/v1/Auth/users responded 204 in 9.5736 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQV4667S9A:00000001","ConnectionId":"0HNMQV4667S9A"}
+[2026-07-05 18:53:52 INF] HTTP OPTIONS /api/v1/Auth/users responded 204 in 9.5857 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQV4667S9B:00000001","ConnectionId":"0HNMQV4667S9B"}
+[2026-07-05 18:53:52 INF] HTTP GET /api/v1/Auth/users responded 404 in 58.5326 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQV4667S9B:00000002","ConnectionId":"0HNMQV4667S9B"}
+[2026-07-05 18:53:52 INF] HTTP GET /api/v1/Auth/users responded 404 in 1.5963 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQV4667S9B:00000003","ConnectionId":"0HNMQV4667S9B"}
+[2026-07-05 18:53:53 INF] HTTP GET /api/v1/Auth/users responded 404 in 2.4037 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQV4667S9B:00000004","ConnectionId":"0HNMQV4667S9B"}
+[2026-07-05 18:53:53 INF] HTTP GET /api/v1/Auth/users responded 404 in 0.5691 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQV4667S9B:00000005","ConnectionId":"0HNMQV4667S9B"}
+[2026-07-05 18:53:56 INF] HTTP GET /api/v1/Auth/users responded 404 in 0.6088 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQV4667S9B:00000006","ConnectionId":"0HNMQV4667S9B"}
+[2026-07-05 18:53:56 INF] HTTP GET /api/v1/Auth/users responded 404 in 0.4989 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQV4667S9B:00000007","ConnectionId":"0HNMQV4667S9B"}
+[2026-07-05 19:30:18 INF] HTTP OPTIONS /api/v1/auth/login responded 204 in 0.5836 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQV4667S9C:00000001","ConnectionId":"0HNMQV4667S9C"}
+[2026-07-05 19:30:18 ERR] Failed executing DbCommand (19ms) [Parameters=[@__name_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT t.id, t.address, t.created_at, t.email, t.is_active, t.name, t.password, t.phone, t.surname, t.updated_at, t.id0, t.email_verification_token, t.email_verification_token_expiry, t.email_verified, t.user_id, t.id1, t.password_reset_token, t.password_reset_token_expiry, t.user_id0, t0.id, t0.assigned_at, t0.created_at, t0.role_id, t0.updated_at, t0.user_id, t0.id0, t0.created_at0, t0.name, t0.updated_at0
+FROM (
+    SELECT u.id, u.address, u.created_at, u.email, u.is_active, u.name, u.password, u.phone, u.surname, u.updated_at, u0.id AS id0, u0.email_verification_token, u0.email_verification_token_expiry, u0.email_verified, u0.user_id, u1.id AS id1, u1.password_reset_token, u1.password_reset_token_expiry, u1.user_id AS user_id0
+    FROM "user" AS u
+    LEFT JOIN user_email AS u0 ON u.id = u0.user_id
+    LEFT JOIN user_password_reset AS u1 ON u.id = u1.user_id
+    WHERE u.name LIKE @__name_1 ESCAPE ''
+    LIMIT 1
+) AS t
+LEFT JOIN (
+    SELECT u2.id, u2.assigned_at, u2.created_at, u2.role_id, u2.updated_at, u2.user_id, r.id AS id0, r.created_at AS created_at0, r.name, r.updated_at AS updated_at0
+    FROM user_role AS u2
+    INNER JOIN role AS r ON u2.role_id = r.id
+) AS t0 ON t.id = t0.user_id
+ORDER BY t.id, t.id0, t.id1, t0.id {"EventId":{"Id":20102,"Name":"Microsoft.EntityFrameworkCore.Database.Command.CommandError"},"SourceContext":"Microsoft.EntityFrameworkCore.Database.Command","ActionId":"60883d5d-702e-4607-9cf6-eeddc0fcf78a","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMQV4667S9C:00000002","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMQV4667S9C"}
+[2026-07-05 19:30:18 ERR] An exception occurred while iterating over the results of a query for context type 'AuthService.Persistence.Data.ApplicationDbContext'.
+Npgsql.PostgresException (0x80004005): 42703: column u.address does not exist
+
+POSITION: 439
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.address does not exist
+    Position: 439
+    File: parse_relation.c
+    Line: 3722
+    Routine: errorMissingColumn {"EventId":{"Id":10100,"Name":"Microsoft.EntityFrameworkCore.Query.QueryIterationFailed"},"SourceContext":"Microsoft.EntityFrameworkCore.Query","ActionId":"60883d5d-702e-4607-9cf6-eeddc0fcf78a","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMQV4667S9C:00000002","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMQV4667S9C"}
+Npgsql.PostgresException (0x80004005): 42703: column u.address does not exist
+
+POSITION: 439
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.address does not exist
+    Position: 439
+    File: parse_relation.c
+    Line: 3722
+    Routine: errorMissingColumn
+[2026-07-05 19:30:18 ERR] An unhandled exception occurred {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNMQV4667S9C:00000002","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMQV4667S9C"}
+Npgsql.PostgresException (0x80004005): 42703: column u.address does not exist
+
+POSITION: 439
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at AuthService.Persistence.Repositories.UserRepository.GetByNameAsync(String name) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Persistence\Repositories\UserRepository.cs:line 55
+   at AuthService.Application.Services.AuthService.LoginAsync(LoginDto loginDto) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Application\Services\AuthService.cs:line 121
+   at AuthService.Api.Controllers.AuthController.Login(LoginDto loginDto) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Api\Controllers\AuthController.cs:line 111
+   at lambda_method18(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at AuthService.Api.Middlewares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Api\Middlewares\GlobalExceptionMiddleware.cs:line 18
+  Exception data:
+    Severity: ERROR
+    SqlState: 42703
+    MessageText: column u.address does not exist
+    Position: 439
+    File: parse_relation.c
+    Line: 3722
+    Routine: errorMissingColumn
+[2026-07-05 19:30:18 ERR] HTTP POST /api/v1/auth/login responded 500 in 327.5393 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQV4667S9C:00000002","ConnectionId":"0HNMQV4667S9C"}
+[2026-07-05 19:31:42 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-07-05 19:31:44 INF] Database ready. Running seed data... {"SourceContext":"Program"}
+[2026-07-05 19:31:44 INF] Database initialization completed successfully {"SourceContext":"Program"}
+[2026-07-05 19:31:44 INF] AuthService API is running at http://localhost:5285. Health endpoint: http://localhost:5285/health {"SourceContext":"Program"}
+[2026-07-05 19:31:57 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-07-05 19:31:57 INF] Database ready. Running seed data... {"SourceContext":"Program"}
+[2026-07-05 19:31:57 INF] Database initialization completed successfully {"SourceContext":"Program"}
+[2026-07-05 19:31:58 INF] AuthService API is running at http://localhost:5285. Health endpoint: http://localhost:5285/health {"SourceContext":"Program"}
+[2026-07-05 19:32:30 WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNMQVPP588CD:00000001","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMQVPP588CD"}
+[2026-07-05 19:32:31 INF] User login succeeded {"EventId":{"Id":1002,"Name":"LogUserLoggedIn"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"1001b203-e3db-415e-b23e-f4d09f7da7a5","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMQVPP588CD:00000001","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMQVPP588CD"}
+[2026-07-05 19:32:31 INF] HTTP POST /api/v1/auth/login responded 200 in 532.8642 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CD:00000001","ConnectionId":"0HNMQVPP588CD"}
+[2026-07-05 19:32:34 INF] HTTP OPTIONS /api/v1/Auth/users responded 204 in 1.7150 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:00000001","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:32:34 INF] HTTP OPTIONS /api/v1/Auth/users responded 204 in 1.6806 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CD:00000002","ConnectionId":"0HNMQVPP588CD"}
+[2026-07-05 19:32:35 INF] HTTP GET /api/v1/Auth/users responded 404 in 30.7273 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:00000002","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:32:35 INF] HTTP GET /api/v1/Auth/users responded 404 in 2.4101 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:00000003","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:33:44 INF] HTTP OPTIONS /auth/login responded 204 in 0.0992 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:00000004","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:33:44 INF] HTTP POST /auth/login responded 404 in 0.1630 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:00000005","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:33:59 INF] HTTP POST /auth/register responded 404 in 0.1230 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:00000006","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:34:21 INF] HTTP POST /auth/register responded 404 in 0.1672 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:00000007","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:35:00 INF] HTTP GET /api/v1/Auth/users responded 404 in 0.6046 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:00000008","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:35:00 INF] HTTP GET /api/v1/Auth/users responded 404 in 0.3998 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:00000009","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:35:02 INF] HTTP GET /api/v1/Auth/users responded 404 in 0.6198 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:0000000A","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:35:02 INF] HTTP GET /api/v1/Auth/users responded 404 in 0.7137 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:0000000B","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:35:03 INF] HTTP GET /api/v1/Auth/users responded 404 in 1.1073 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:0000000C","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:35:03 INF] HTTP GET /api/v1/Auth/users responded 404 in 0.5558 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:0000000D","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:35:03 INF] HTTP GET /api/v1/Auth/users responded 404 in 0.5716 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:0000000E","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:35:03 INF] HTTP GET /api/v1/Auth/users responded 404 in 0.2823 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:0000000F","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:35:05 INF] HTTP POST /auth/register responded 404 in 0.1348 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:00000010","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:35:55 INF] HTTP POST /auth/v1/register responded 404 in 0.2695 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:00000011","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:36:47 INF] User Alessandro registered successfully {"EventId":{"Id":1001,"Name":"LogUserRegistered"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"88d7deaf-b1ed-4633-b82c-e1cdcc6f7000","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNMQVPP588CE:00000012","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:36:47 INF] HTTP POST /api/v1/auth/register responded 201 in 538.0525 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:00000012","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:36:49 INF] Email sent successfully {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"88d7deaf-b1ed-4633-b82c-e1cdcc6f7000","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNMQVPP588CE:00000012","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:36:49 INF] Email pipeline completed {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"88d7deaf-b1ed-4633-b82c-e1cdcc6f7000","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNMQVPP588CE:00000012","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:36:49 INF] Email processed {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"88d7deaf-b1ed-4633-b82c-e1cdcc6f7000","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNMQVPP588CE:00000012","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:36:49 INF] Verification email sent {"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"88d7deaf-b1ed-4633-b82c-e1cdcc6f7000","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNMQVPP588CE:00000012","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:37:00 INF] HTTP OPTIONS /auth/verify-email responded 204 in 0.3707 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:00000013","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:37:00 INF] HTTP POST /auth/verify-email responded 404 in 0.2078 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:00000014","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:37:07 INF] HTTP POST /auth/login responded 404 in 0.1365 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:00000015","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:37:35 INF] HTTP OPTIONS /api/v1/auth/verify-email responded 204 in 0.1928 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:00000016","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:37:37 INF] Email sent successfully {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"28ffa308-fd2d-469f-821c-a354d686a148","ActionName":"AuthService.Api.Controllers.AuthController.VerifyEmail (AuthService.Api)","RequestId":"0HNMQVPP588CE:00000017","RequestPath":"/api/v1/auth/verify-email","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:37:38 INF] Email pipeline completed {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"28ffa308-fd2d-469f-821c-a354d686a148","ActionName":"AuthService.Api.Controllers.AuthController.VerifyEmail (AuthService.Api)","RequestId":"0HNMQVPP588CE:00000017","RequestPath":"/api/v1/auth/verify-email","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:37:38 INF] Email processed {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"28ffa308-fd2d-469f-821c-a354d686a148","ActionName":"AuthService.Api.Controllers.AuthController.VerifyEmail (AuthService.Api)","RequestId":"0HNMQVPP588CE:00000017","RequestPath":"/api/v1/auth/verify-email","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:37:38 INF] Email verified successfully for user Alessandro {"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"28ffa308-fd2d-469f-821c-a354d686a148","ActionName":"AuthService.Api.Controllers.AuthController.VerifyEmail (AuthService.Api)","RequestId":"0HNMQVPP588CE:00000017","RequestPath":"/api/v1/auth/verify-email","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:37:38 INF] HTTP POST /api/v1/auth/verify-email responded 200 in 2310.5262 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:00000017","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:37:44 INF] HTTP POST /auth/login responded 404 in 0.1664 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:00000018","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:37:50 INF] HTTP POST /auth/login responded 404 in 0.1191 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:00000019","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:38:06 INF] HTTP OPTIONS /api/v1/auth/login responded 204 in 0.1020 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:0000001A","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:38:06 INF] User login succeeded {"EventId":{"Id":1002,"Name":"LogUserLoggedIn"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"1001b203-e3db-415e-b23e-f4d09f7da7a5","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMQVPP588CE:0000001B","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 19:38:06 INF] HTTP POST /api/v1/auth/login responded 200 in 363.2197 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CE:0000001B","ConnectionId":"0HNMQVPP588CE"}
+[2026-07-05 20:50:58 INF] HTTP OPTIONS /api/v1/Auth/users responded 204 in 0.1223 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CK:00000001","ConnectionId":"0HNMQVPP588CK"}
+[2026-07-05 20:50:58 INF] HTTP GET /api/v1/Auth/users responded 404 in 5.3563 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CK:00000002","ConnectionId":"0HNMQVPP588CK"}
+[2026-07-05 21:22:07 INF] HTTP OPTIONS /api/v1/auth/login responded 204 in 0.1582 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CL:00000001","ConnectionId":"0HNMQVPP588CL"}
+[2026-07-05 21:22:07 INF] User login succeeded {"EventId":{"Id":1002,"Name":"LogUserLoggedIn"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"1001b203-e3db-415e-b23e-f4d09f7da7a5","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMQVPP588CL:00000002","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMQVPP588CL"}
+[2026-07-05 21:22:07 INF] HTTP POST /api/v1/auth/login responded 200 in 139.3306 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CL:00000002","ConnectionId":"0HNMQVPP588CL"}
+[2026-07-05 21:24:33 INF] HTTP OPTIONS /api/v1/Auth/users responded 204 in 0.2196 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CM:00000001","ConnectionId":"0HNMQVPP588CM"}
+[2026-07-05 21:24:33 INF] HTTP OPTIONS /api/v1/Auth/users responded 204 in 0.0650 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CN:00000001","ConnectionId":"0HNMQVPP588CN"}
+[2026-07-05 21:24:33 INF] HTTP GET /api/v1/Auth/users responded 404 in 0.3996 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CM:00000002","ConnectionId":"0HNMQVPP588CM"}
+[2026-07-05 21:24:33 INF] HTTP GET /api/v1/Auth/users responded 404 in 0.5811 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CM:00000003","ConnectionId":"0HNMQVPP588CM"}
+[2026-07-05 21:27:17 INF] User Gerardo registered successfully {"EventId":{"Id":1001,"Name":"LogUserRegistered"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"88d7deaf-b1ed-4633-b82c-e1cdcc6f7000","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNMQVPP588CO:00000001","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNMQVPP588CO"}
+[2026-07-05 21:27:17 INF] HTTP POST /api/v1/auth/register responded 201 in 125.6813 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CO:00000001","ConnectionId":"0HNMQVPP588CO"}
+[2026-07-05 21:27:19 INF] Email sent successfully {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"88d7deaf-b1ed-4633-b82c-e1cdcc6f7000","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNMQVPP588CO:00000001","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNMQVPP588CO"}
+[2026-07-05 21:27:19 INF] Email pipeline completed {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"88d7deaf-b1ed-4633-b82c-e1cdcc6f7000","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNMQVPP588CO:00000001","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNMQVPP588CO"}
+[2026-07-05 21:27:19 INF] Email processed {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"88d7deaf-b1ed-4633-b82c-e1cdcc6f7000","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNMQVPP588CO:00000001","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNMQVPP588CO"}
+[2026-07-05 21:27:19 INF] Verification email sent {"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"88d7deaf-b1ed-4633-b82c-e1cdcc6f7000","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNMQVPP588CO:00000001","RequestPath":"/api/v1/auth/register","ConnectionId":"0HNMQVPP588CO"}
+[2026-07-05 21:27:30 INF] HTTP OPTIONS /api/v1/auth/verify-email responded 204 in 0.0924 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CP:00000001","ConnectionId":"0HNMQVPP588CP"}
+[2026-07-05 21:27:32 INF] Email sent successfully {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"28ffa308-fd2d-469f-821c-a354d686a148","ActionName":"AuthService.Api.Controllers.AuthController.VerifyEmail (AuthService.Api)","RequestId":"0HNMQVPP588CP:00000002","RequestPath":"/api/v1/auth/verify-email","ConnectionId":"0HNMQVPP588CP"}
+[2026-07-05 21:27:32 INF] Email pipeline completed {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"28ffa308-fd2d-469f-821c-a354d686a148","ActionName":"AuthService.Api.Controllers.AuthController.VerifyEmail (AuthService.Api)","RequestId":"0HNMQVPP588CP:00000002","RequestPath":"/api/v1/auth/verify-email","ConnectionId":"0HNMQVPP588CP"}
+[2026-07-05 21:27:32 INF] Email processed {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"28ffa308-fd2d-469f-821c-a354d686a148","ActionName":"AuthService.Api.Controllers.AuthController.VerifyEmail (AuthService.Api)","RequestId":"0HNMQVPP588CP:00000002","RequestPath":"/api/v1/auth/verify-email","ConnectionId":"0HNMQVPP588CP"}
+[2026-07-05 21:27:32 INF] Email verified successfully for user Gerardo {"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"28ffa308-fd2d-469f-821c-a354d686a148","ActionName":"AuthService.Api.Controllers.AuthController.VerifyEmail (AuthService.Api)","RequestId":"0HNMQVPP588CP:00000002","RequestPath":"/api/v1/auth/verify-email","ConnectionId":"0HNMQVPP588CP"}
+[2026-07-05 21:27:32 INF] HTTP POST /api/v1/auth/verify-email responded 200 in 2003.8837 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CP:00000002","ConnectionId":"0HNMQVPP588CP"}
+[2026-07-05 21:27:45 INF] HTTP OPTIONS /api/v1/auth/login responded 204 in 0.0579 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CO:00000002","ConnectionId":"0HNMQVPP588CO"}
+[2026-07-05 21:27:45 INF] User login succeeded {"EventId":{"Id":1002,"Name":"LogUserLoggedIn"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"1001b203-e3db-415e-b23e-f4d09f7da7a5","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMQVPP588CO:00000003","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMQVPP588CO"}
+[2026-07-05 21:27:45 INF] HTTP POST /api/v1/auth/login responded 200 in 86.0347 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CO:00000003","ConnectionId":"0HNMQVPP588CO"}
+[2026-07-05 21:28:05 INF] User login succeeded {"EventId":{"Id":1002,"Name":"LogUserLoggedIn"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"1001b203-e3db-415e-b23e-f4d09f7da7a5","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMQVPP588CO:00000004","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMQVPP588CO"}
+[2026-07-05 21:28:05 INF] HTTP POST /api/v1/auth/login responded 200 in 94.8566 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CO:00000004","ConnectionId":"0HNMQVPP588CO"}
+[2026-07-05 21:28:18 INF] HTTP GET /api/v1/Auth/users responded 404 in 0.4299 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CO:00000005","ConnectionId":"0HNMQVPP588CO"}
+[2026-07-05 21:28:18 INF] HTTP GET /api/v1/Auth/users responded 404 in 0.3166 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CO:00000006","ConnectionId":"0HNMQVPP588CO"}
+[2026-07-05 21:40:19 INF] HTTP OPTIONS /api/v1/auth/login responded 204 in 0.0682 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CQ:00000001","ConnectionId":"0HNMQVPP588CQ"}
+[2026-07-05 21:40:19 INF] User login succeeded {"EventId":{"Id":1002,"Name":"LogUserLoggedIn"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"1001b203-e3db-415e-b23e-f4d09f7da7a5","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMQVPP588CQ:00000002","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMQVPP588CQ"}
+[2026-07-05 21:40:19 INF] HTTP POST /api/v1/auth/login responded 200 in 153.4556 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CQ:00000002","ConnectionId":"0HNMQVPP588CQ"}
+[2026-07-05 21:40:56 INF] HTTP OPTIONS /api/v1/Auth/users responded 204 in 0.1151 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CQ:00000003","ConnectionId":"0HNMQVPP588CQ"}
+[2026-07-05 21:40:56 INF] HTTP OPTIONS /api/v1/Auth/users responded 204 in 0.0416 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CR:00000001","ConnectionId":"0HNMQVPP588CR"}
+[2026-07-05 21:40:56 INF] HTTP GET /api/v1/Auth/users responded 404 in 0.2684 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CQ:00000004","ConnectionId":"0HNMQVPP588CQ"}
+[2026-07-05 21:40:56 INF] HTTP GET /api/v1/Auth/users responded 404 in 0.3673 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CQ:00000005","ConnectionId":"0HNMQVPP588CQ"}
+[2026-07-05 21:41:15 INF] User login succeeded {"EventId":{"Id":1002,"Name":"LogUserLoggedIn"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"1001b203-e3db-415e-b23e-f4d09f7da7a5","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMQVPP588CQ:00000006","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMQVPP588CQ"}
+[2026-07-05 21:41:15 INF] HTTP POST /api/v1/auth/login responded 200 in 84.3148 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CQ:00000006","ConnectionId":"0HNMQVPP588CQ"}
+[2026-07-05 21:41:36 INF] HTTP GET /api/v1/Auth/users responded 404 in 0.4535 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CQ:00000007","ConnectionId":"0HNMQVPP588CQ"}
+[2026-07-05 21:41:36 INF] HTTP GET /api/v1/Auth/users responded 404 in 0.4694 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CQ:00000008","ConnectionId":"0HNMQVPP588CQ"}
+[2026-07-05 21:44:23 INF] User login succeeded {"EventId":{"Id":1002,"Name":"LogUserLoggedIn"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"1001b203-e3db-415e-b23e-f4d09f7da7a5","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMQVPP588CS:00000001","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMQVPP588CS"}
+[2026-07-05 21:44:23 INF] HTTP POST /api/v1/auth/login responded 200 in 89.4349 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CS:00000001","ConnectionId":"0HNMQVPP588CS"}
+[2026-07-05 21:49:01 INF] User login succeeded {"EventId":{"Id":1002,"Name":"LogUserLoggedIn"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"1001b203-e3db-415e-b23e-f4d09f7da7a5","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMQVPP588CT:00000001","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMQVPP588CT"}
+[2026-07-05 21:49:01 INF] HTTP POST /api/v1/auth/login responded 200 in 97.1901 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMQVPP588CT:00000001","ConnectionId":"0HNMQVPP588CT"}
+[2026-07-05 21:55:46 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-07-05 21:55:47 INF] Database ready. Running seed data... {"SourceContext":"Program"}
+[2026-07-05 21:55:47 INF] Database initialization completed successfully {"SourceContext":"Program"}
+[2026-07-05 21:55:47 INF] AuthService API is running at http://localhost:5285. Health endpoint: http://localhost:5285/health {"SourceContext":"Program"}
+[2026-07-05 21:56:33 WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNMR2A8NP11G:00000001","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMR2A8NP11G"}
+[2026-07-05 21:56:33 INF] HTTP OPTIONS /api/v1/auth/login responded 204 in 8.6758 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMR2A8NP11G:00000001","ConnectionId":"0HNMR2A8NP11G"}
+[2026-07-05 21:56:33 INF] User login succeeded {"EventId":{"Id":1002,"Name":"LogUserLoggedIn"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"aedd0c61-baa0-47d5-86da-a2aa0182bf67","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMR2A8NP11G:00000002","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMR2A8NP11G"}
+[2026-07-05 21:56:33 INF] HTTP POST /api/v1/auth/login responded 200 in 534.7542 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMR2A8NP11G:00000002","ConnectionId":"0HNMR2A8NP11G"}
+[2026-07-05 22:04:56 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-07-05 22:04:57 INF] Database ready. Running seed data... {"SourceContext":"Program"}
+[2026-07-05 22:04:57 INF] Database initialization completed successfully {"SourceContext":"Program"}
+[2026-07-05 22:04:57 INF] AuthService API is running at http://localhost:5285. Health endpoint: http://localhost:5285/health {"SourceContext":"Program"}
+[2026-07-05 22:09:28 WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNMR2HFNN1NQ:00000001","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMR2HFNN1NQ"}
+[2026-07-05 22:09:28 INF] HTTP OPTIONS /api/v1/auth/login responded 204 in 8.0756 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMR2HFNN1NQ:00000001","ConnectionId":"0HNMR2HFNN1NQ"}
+[2026-07-05 22:09:28 INF] User login succeeded {"EventId":{"Id":1002,"Name":"LogUserLoggedIn"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"ab6291d4-c5dc-4095-a141-a19c56b32c21","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMR2HFNN1NQ:00000002","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMR2HFNN1NQ"}
+[2026-07-05 22:09:28 INF] HTTP POST /api/v1/auth/login responded 200 in 503.6340 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMR2HFNN1NQ:00000002","ConnectionId":"0HNMR2HFNN1NQ"}

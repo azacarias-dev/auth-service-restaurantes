@@ -1,0 +1,314 @@
+[2026-07-06 08:38:07 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-07-06 08:38:08 ERR] An error occurred while initializing the database {"SourceContext":"Program"}
+Npgsql.PostgresException (0x80004005): 28P01: password authentication failed for user "admin"
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.Internal.NpgsqlConnector.AuthenticateSASL(List`1 mechanisms, String username, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.Authenticate(String username, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.Internal.NpgsqlConnector.<Open>g__OpenCore|213_1(NpgsqlConnector conn, SslMode sslMode, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken, Boolean isFirstAttempt)
+   at Npgsql.Internal.NpgsqlConnector.Open(NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.UnpooledDataSource.Get(NpgsqlConnection conn, NpgsqlTimeout timeout, Boolean async, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlConnection.<Open>g__OpenAsync|42_0(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlDatabaseCreator.Exists(Boolean async, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlDatabaseCreator.Exists(Boolean async, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabaseCreator.EnsureCreatedAsync(CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabaseCreator.EnsureCreatedAsync(CancellationToken cancellationToken)
+   at Program.<Main>$(String[] args) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Api\Program.cs:line 183
+  Exception data:
+    Severity: FATAL
+    SqlState: 28P01
+    MessageText: password authentication failed for user "admin"
+    File: auth.c
+    Line: 331
+    Routine: auth_failed
+[2026-07-06 08:39:09 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-07-06 08:39:09 INF] Database ready. Running seed data... {"SourceContext":"Program"}
+[2026-07-06 08:39:09 INF] Database initialization completed successfully {"SourceContext":"Program"}
+[2026-07-06 08:39:10 INF] AuthService API is running at http://localhost:5285. Health endpoint: http://localhost:5285/health {"SourceContext":"Program"}
+[2026-07-06 08:39:37 WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNMRDHJQ1D1K:00000001","RequestPath":"/api/v1/Auth/users","ConnectionId":"0HNMRDHJQ1D1K"}
+[2026-07-06 08:39:37 INF] HTTP OPTIONS /api/v1/Auth/users responded 204 in 9.8099 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRDHJQ1D1J:00000001","ConnectionId":"0HNMRDHJQ1D1J"}
+[2026-07-06 08:39:37 INF] HTTP OPTIONS /api/v1/Auth/users responded 204 in 9.8190 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRDHJQ1D1K:00000001","ConnectionId":"0HNMRDHJQ1D1K"}
+[2026-07-06 08:39:37 INF] HTTP GET /api/v1/Auth/users responded 404 in 63.5335 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRDHJQ1D1J:00000002","ConnectionId":"0HNMRDHJQ1D1J"}
+[2026-07-06 08:39:37 INF] HTTP GET /api/v1/Auth/users responded 404 in 1.7487 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRDHJQ1D1J:00000003","ConnectionId":"0HNMRDHJQ1D1J"}
+[2026-07-06 09:05:18 INF] HTTP OPTIONS /api/v1/Auth/users responded 204 in 0.1298 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRDHJQ1D1L:00000001","ConnectionId":"0HNMRDHJQ1D1L"}
+[2026-07-06 09:05:18 INF] HTTP GET /api/v1/Auth/users responded 404 in 2.2355 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRDHJQ1D1L:00000002","ConnectionId":"0HNMRDHJQ1D1L"}
+[2026-07-06 09:10:08 INF] HTTP GET /api/v1/Auth/users responded 404 in 0.9333 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRDHJQ1D1M:00000001","ConnectionId":"0HNMRDHJQ1D1M"}
+[2026-07-06 09:10:08 INF] HTTP GET /api/v1/Auth/users responded 404 in 0.8152 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRDHJQ1D1M:00000002","ConnectionId":"0HNMRDHJQ1D1M"}
+[2026-07-06 09:35:05 INF] HTTP OPTIONS /api/v1/auth/login responded 204 in 0.2035 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRDHJQ1D1N:00000001","ConnectionId":"0HNMRDHJQ1D1N"}
+[2026-07-06 09:35:06 INF] User login succeeded {"EventId":{"Id":1002,"Name":"LogUserLoggedIn"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"a9ca1b5b-5873-48bd-b287-afc05782f7e0","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRDHJQ1D1N:00000002","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMRDHJQ1D1N"}
+[2026-07-06 09:35:06 INF] HTTP POST /api/v1/auth/login responded 200 in 586.0265 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRDHJQ1D1N:00000002","ConnectionId":"0HNMRDHJQ1D1N"}
+[2026-07-06 10:08:52 INF] HTTP OPTIONS /api/v1/auth/login responded 204 in 0.2309 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRDHJQ1D1O:00000001","ConnectionId":"0HNMRDHJQ1D1O"}
+[2026-07-06 10:08:52 INF] User login succeeded {"EventId":{"Id":1002,"Name":"LogUserLoggedIn"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"a9ca1b5b-5873-48bd-b287-afc05782f7e0","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRDHJQ1D1O:00000002","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMRDHJQ1D1O"}
+[2026-07-06 10:08:52 INF] HTTP POST /api/v1/auth/login responded 200 in 363.4868 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRDHJQ1D1O:00000002","ConnectionId":"0HNMRDHJQ1D1O"}
+[2026-07-06 10:16:31 INF] HTTP OPTIONS /api/v1/Auth/users responded 204 in 0.0991 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRDHJQ1D1P:00000001","ConnectionId":"0HNMRDHJQ1D1P"}
+[2026-07-06 10:16:31 INF] HTTP OPTIONS /api/v1/Auth/users responded 204 in 0.0568 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRDHJQ1D1Q:00000001","ConnectionId":"0HNMRDHJQ1D1Q"}
+[2026-07-06 10:16:31 INF] HTTP GET /api/v1/Auth/users responded 404 in 10.3196 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRDHJQ1D1P:00000002","ConnectionId":"0HNMRDHJQ1D1P"}
+[2026-07-06 10:16:31 INF] HTTP GET /api/v1/Auth/users responded 404 in 0.4635 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRDHJQ1D1P:00000003","ConnectionId":"0HNMRDHJQ1D1P"}
+[2026-07-06 10:33:56 INF] HTTP OPTIONS /api/v1/auth/login responded 204 in 0.1089 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRDHJQ1D1R:00000001","ConnectionId":"0HNMRDHJQ1D1R"}
+[2026-07-06 10:33:56 WRN] Failed login attempt {"EventId":{"Id":1003,"Name":"LogFailedLoginAttempt"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"a9ca1b5b-5873-48bd-b287-afc05782f7e0","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRDHJQ1D1R:00000002","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMRDHJQ1D1R"}
+[2026-07-06 10:33:56 ERR] An unhandled exception occurred {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNMRDHJQ1D1R:00000002","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMRDHJQ1D1R"}
+System.UnauthorizedAccessException: Invalid credentials
+   at AuthService.Application.Services.AuthService.LoginAsync(LoginDto loginDto) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Application\Services\AuthService.cs:line 128
+   at AuthService.Api.Controllers.AuthController.Login(LoginDto loginDto) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Api\Controllers\AuthController.cs:line 111
+   at lambda_method18(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at AuthService.Api.Middlewares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Api\Middlewares\GlobalExceptionMiddleware.cs:line 18
+[2026-07-06 10:33:56 INF] HTTP POST /api/v1/auth/login responded 401 in 62.3116 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRDHJQ1D1R:00000002","ConnectionId":"0HNMRDHJQ1D1R"}
+[2026-07-06 10:34:01 WRN] Failed login attempt {"EventId":{"Id":1003,"Name":"LogFailedLoginAttempt"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"a9ca1b5b-5873-48bd-b287-afc05782f7e0","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRDHJQ1D1R:00000003","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMRDHJQ1D1R"}
+[2026-07-06 10:34:01 ERR] An unhandled exception occurred {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNMRDHJQ1D1R:00000003","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMRDHJQ1D1R"}
+System.UnauthorizedAccessException: Invalid credentials
+   at AuthService.Application.Services.AuthService.LoginAsync(LoginDto loginDto) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Application\Services\AuthService.cs:line 128
+   at AuthService.Api.Controllers.AuthController.Login(LoginDto loginDto) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Api\Controllers\AuthController.cs:line 111
+   at lambda_method18(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at AuthService.Api.Middlewares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Api\Middlewares\GlobalExceptionMiddleware.cs:line 18
+[2026-07-06 10:34:01 INF] HTTP POST /api/v1/auth/login responded 401 in 10.4660 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRDHJQ1D1R:00000003","ConnectionId":"0HNMRDHJQ1D1R"}
+[2026-07-06 10:49:22 INF] HTTP OPTIONS /api/v1/auth/login responded 204 in 0.1808 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRDHJQ1D1S:00000001","ConnectionId":"0HNMRDHJQ1D1S"}
+[2026-07-06 10:49:22 WRN] Failed login attempt {"EventId":{"Id":1003,"Name":"LogFailedLoginAttempt"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"a9ca1b5b-5873-48bd-b287-afc05782f7e0","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRDHJQ1D1S:00000002","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMRDHJQ1D1S"}
+[2026-07-06 10:49:22 ERR] An unhandled exception occurred {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNMRDHJQ1D1S:00000002","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMRDHJQ1D1S"}
+System.UnauthorizedAccessException: Invalid credentials
+   at AuthService.Application.Services.AuthService.LoginAsync(LoginDto loginDto) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Application\Services\AuthService.cs:line 128
+   at AuthService.Api.Controllers.AuthController.Login(LoginDto loginDto) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Api\Controllers\AuthController.cs:line 111
+   at lambda_method18(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at AuthService.Api.Middlewares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Api\Middlewares\GlobalExceptionMiddleware.cs:line 18
+[2026-07-06 10:49:22 INF] HTTP POST /api/v1/auth/login responded 401 in 21.9048 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRDHJQ1D1S:00000002","ConnectionId":"0HNMRDHJQ1D1S"}
+[2026-07-06 10:49:44 WRN] Failed login attempt {"EventId":{"Id":1003,"Name":"LogFailedLoginAttempt"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"a9ca1b5b-5873-48bd-b287-afc05782f7e0","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRDHJQ1D1S:00000003","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMRDHJQ1D1S"}
+[2026-07-06 10:49:44 ERR] An unhandled exception occurred {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNMRDHJQ1D1S:00000003","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMRDHJQ1D1S"}
+System.UnauthorizedAccessException: Invalid credentials
+   at AuthService.Application.Services.AuthService.LoginAsync(LoginDto loginDto) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Application\Services\AuthService.cs:line 142
+   at AuthService.Api.Controllers.AuthController.Login(LoginDto loginDto) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Api\Controllers\AuthController.cs:line 111
+   at lambda_method18(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at AuthService.Api.Middlewares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Api\Middlewares\GlobalExceptionMiddleware.cs:line 18
+[2026-07-06 10:49:44 INF] HTTP POST /api/v1/auth/login responded 401 in 114.3598 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRDHJQ1D1S:00000003","ConnectionId":"0HNMRDHJQ1D1S"}
+[2026-07-06 13:06:33 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-07-06 13:06:34 INF] Database ready. Running seed data... {"SourceContext":"Program"}
+[2026-07-06 13:06:34 INF] Database initialization completed successfully {"SourceContext":"Program"}
+[2026-07-06 13:06:34 INF] AuthService API is running at http://0.0.0.0:5156. Health endpoint: http://0.0.0.0:5156/health {"SourceContext":"Program"}
+[2026-07-06 13:16:40 WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNMRICDLQ4HC:00000001","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRICDLQ4HC"}
+[2026-07-06 13:16:40 WRN] Failed login attempt {"EventId":{"Id":1003,"Name":"LogFailedLoginAttempt"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"1d4b20c6-f582-4d82-8314-9ca96654d556","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRICDLQ4HC:00000001","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRICDLQ4HC"}
+[2026-07-06 13:16:40 ERR] An unhandled exception occurred {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNMRICDLQ4HC:00000001","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRICDLQ4HC"}
+System.UnauthorizedAccessException: Invalid credentials
+   at AuthService.Application.Services.AuthService.LoginAsync(LoginDto loginDto) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Application\Services\AuthService.cs:line 142
+   at AuthService.Api.Controllers.AuthController.Login(LoginDto loginDto) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Api\Controllers\AuthController.cs:line 111
+   at lambda_method18(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at AuthService.Api.Middlewares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Api\Middlewares\GlobalExceptionMiddleware.cs:line 18
+[2026-07-06 13:16:40 INF] HTTP POST /api/v1/Auth/login responded 401 in 604.5563 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRICDLQ4HC:00000001","ConnectionId":"0HNMRICDLQ4HC"}
+[2026-07-06 13:16:59 WRN] Failed login attempt {"EventId":{"Id":1003,"Name":"LogFailedLoginAttempt"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"1d4b20c6-f582-4d82-8314-9ca96654d556","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRICDLQ4HC:00000002","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRICDLQ4HC"}
+[2026-07-06 13:16:59 ERR] An unhandled exception occurred {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNMRICDLQ4HC:00000002","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRICDLQ4HC"}
+System.UnauthorizedAccessException: Invalid credentials
+   at AuthService.Application.Services.AuthService.LoginAsync(LoginDto loginDto) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Application\Services\AuthService.cs:line 142
+   at AuthService.Api.Controllers.AuthController.Login(LoginDto loginDto) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Api\Controllers\AuthController.cs:line 111
+   at lambda_method18(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at AuthService.Api.Middlewares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Api\Middlewares\GlobalExceptionMiddleware.cs:line 18
+[2026-07-06 13:16:59 INF] HTTP POST /api/v1/Auth/login responded 401 in 499.8595 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRICDLQ4HC:00000002","ConnectionId":"0HNMRICDLQ4HC"}
+[2026-07-06 13:17:44 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-07-06 13:17:45 INF] Database ready. Running seed data... {"SourceContext":"Program"}
+[2026-07-06 13:17:46 INF] Database initialization completed successfully {"SourceContext":"Program"}
+[2026-07-06 13:17:46 INF] AuthService API is running at http://0.0.0.0:5156. Health endpoint: http://0.0.0.0:5156/health {"SourceContext":"Program"}
+[2026-07-06 13:18:02 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-07-06 13:18:03 INF] Database ready. Running seed data... {"SourceContext":"Program"}
+[2026-07-06 13:18:03 INF] Database initialization completed successfully {"SourceContext":"Program"}
+[2026-07-06 13:18:03 INF] AuthService API is running at http://0.0.0.0:5156. Health endpoint: http://0.0.0.0:5156/health {"SourceContext":"Program"}
+[2026-07-06 13:18:06 WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNMRID7CIFK4:00000001","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRID7CIFK4"}
+[2026-07-06 13:18:06 WRN] Failed login attempt {"EventId":{"Id":1003,"Name":"LogFailedLoginAttempt"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"3accab3d-9f6b-42e1-9f96-80f88168b24b","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRID7CIFK4:00000001","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRID7CIFK4"}
+[2026-07-06 13:18:06 ERR] An unhandled exception occurred {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNMRID7CIFK4:00000001","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRID7CIFK4"}
+System.UnauthorizedAccessException: Invalid credentials
+   at AuthService.Application.Services.AuthService.LoginAsync(LoginDto loginDto) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Application\Services\AuthService.cs:line 128
+   at AuthService.Api.Controllers.AuthController.Login(LoginDto loginDto) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Api\Controllers\AuthController.cs:line 111
+   at lambda_method18(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at AuthService.Api.Middlewares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Api\Middlewares\GlobalExceptionMiddleware.cs:line 18
+[2026-07-06 13:18:07 INF] HTTP POST /api/v1/Auth/login responded 401 in 308.5222 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRID7CIFK4:00000001","ConnectionId":"0HNMRID7CIFK4"}
+[2026-07-06 13:24:55 WRN] Failed login attempt {"EventId":{"Id":1003,"Name":"LogFailedLoginAttempt"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"3accab3d-9f6b-42e1-9f96-80f88168b24b","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRID7CIFK5:00000001","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRID7CIFK5"}
+[2026-07-06 13:24:55 ERR] An unhandled exception occurred {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNMRID7CIFK5:00000001","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRID7CIFK5"}
+System.UnauthorizedAccessException: Invalid credentials
+   at AuthService.Application.Services.AuthService.LoginAsync(LoginDto loginDto) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Application\Services\AuthService.cs:line 128
+   at AuthService.Api.Controllers.AuthController.Login(LoginDto loginDto) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Api\Controllers\AuthController.cs:line 111
+   at lambda_method18(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.RateLimiting.RateLimitingMiddleware.InvokeInternal(HttpContext context, EnableRateLimitingAttribute enableRateLimitingAttribute)
+   at AuthService.Api.Middlewares.GlobalExceptionMiddleware.InvokeAsync(HttpContext context) in C:\Users\aless\Documents\Portfolio\Proyecto Restaurante\auth-service-restaurantes\src\AuthService.Api\Middlewares\GlobalExceptionMiddleware.cs:line 18
+[2026-07-06 13:24:55 INF] HTTP POST /api/v1/Auth/login responded 401 in 72.7031 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRID7CIFK5:00000001","ConnectionId":"0HNMRID7CIFK5"}
+[2026-07-06 13:28:41 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-07-06 13:28:42 INF] Database ready. Running seed data... {"SourceContext":"Program"}
+[2026-07-06 13:28:42 INF] Database initialization completed successfully {"SourceContext":"Program"}
+[2026-07-06 13:28:42 INF] AuthService API is running at http://0.0.0.0:5156. Health endpoint: http://0.0.0.0:5156/health {"SourceContext":"Program"}
+[2026-07-06 13:29:32 WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNMRIJJS0LTU:00000001","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRIJJS0LTU"}
+[2026-07-06 13:29:32 WRN] Failed login attempt {"EventId":{"Id":1003,"Name":"LogFailedLoginAttempt"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"f708883c-d252-458b-b927-8a80e00338a9","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRIJJS0LTU:00000001","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRIJJS0LTU"}
+[2026-07-06 13:29:32 WRN] Invalid credentials {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNMRIJJS0LTU:00000001","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRIJJS0LTU"}
+[2026-07-06 13:29:32 INF] HTTP POST /api/v1/Auth/login responded 401 in 275.5592 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRIJJS0LTU:00000001","ConnectionId":"0HNMRIJJS0LTU"}
+[2026-07-06 13:30:18 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-07-06 13:30:19 INF] Database ready. Running seed data... {"SourceContext":"Program"}
+[2026-07-06 13:30:20 INF] Database initialization completed successfully {"SourceContext":"Program"}
+[2026-07-06 13:30:20 INF] AuthService API is running at http://0.0.0.0:5156. Health endpoint: http://0.0.0.0:5156/health {"SourceContext":"Program"}
+[2026-07-06 13:30:33 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-07-06 13:30:34 INF] Database ready. Running seed data... {"SourceContext":"Program"}
+[2026-07-06 13:30:34 INF] Database initialization completed successfully {"SourceContext":"Program"}
+[2026-07-06 13:30:34 INF] AuthService API is running at http://0.0.0.0:5156. Health endpoint: http://0.0.0.0:5156/health {"SourceContext":"Program"}
+[2026-07-06 13:31:16 WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNMRIKIVB9DN:00000001","RequestPath":"/api/v1/Auth/register","ConnectionId":"0HNMRIKIVB9DN"}
+[2026-07-06 13:31:16 INF] HTTP POST /api/v1/Auth/register responded 415 in 26.1625 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRIKIVB9DN:00000001","ConnectionId":"0HNMRIKIVB9DN"}
+[2026-07-06 13:33:09 INF] User Alessandro registered successfully {"EventId":{"Id":1001,"Name":"LogUserRegistered"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"49db3b38-9cc7-452f-86c8-827db736c2f5","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNMRIKIVB9DN:00000002","RequestPath":"/api/v1/Auth/register","ConnectionId":"0HNMRIKIVB9DN"}
+[2026-07-06 13:33:09 INF] HTTP POST /api/v1/Auth/register responded 201 in 742.0132 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRIKIVB9DN:00000002","ConnectionId":"0HNMRIKIVB9DN"}
+[2026-07-06 13:33:11 INF] Email sent successfully {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"49db3b38-9cc7-452f-86c8-827db736c2f5","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNMRIKIVB9DN:00000002","RequestPath":"/api/v1/Auth/register","ConnectionId":"0HNMRIKIVB9DN"}
+[2026-07-06 13:33:11 INF] Email pipeline completed {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"49db3b38-9cc7-452f-86c8-827db736c2f5","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNMRIKIVB9DN:00000002","RequestPath":"/api/v1/Auth/register","ConnectionId":"0HNMRIKIVB9DN"}
+[2026-07-06 13:33:11 INF] Email processed {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"49db3b38-9cc7-452f-86c8-827db736c2f5","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNMRIKIVB9DN:00000002","RequestPath":"/api/v1/Auth/register","ConnectionId":"0HNMRIKIVB9DN"}
+[2026-07-06 13:33:11 INF] Verification email sent {"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"49db3b38-9cc7-452f-86c8-827db736c2f5","ActionName":"AuthService.Api.Controllers.AuthController.Register (AuthService.Api)","RequestId":"0HNMRIKIVB9DN:00000002","RequestPath":"/api/v1/Auth/register","ConnectionId":"0HNMRIKIVB9DN"}
+[2026-07-06 13:41:47 INF] HTTP OPTIONS /api/v1/auth/login responded 204 in 2.1310 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRIKIVB9DO:00000001","ConnectionId":"0HNMRIKIVB9DO"}
+[2026-07-06 13:41:48 WRN] Failed login attempt {"EventId":{"Id":1003,"Name":"LogFailedLoginAttempt"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"a9bcbde4-e7f4-4639-9db0-ac9e65b89c24","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRIKIVB9DO:00000002","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMRIKIVB9DO"}
+[2026-07-06 13:41:48 WRN] User account is disabled {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNMRIKIVB9DO:00000002","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMRIKIVB9DO"}
+[2026-07-06 13:41:48 INF] HTTP POST /api/v1/auth/login responded 401 in 100.5893 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRIKIVB9DO:00000002","ConnectionId":"0HNMRIKIVB9DO"}
+[2026-07-06 13:41:52 INF] HTTP OPTIONS /api/v1/auth/verify-email responded 204 in 0.2846 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRIKIVB9DO:00000003","ConnectionId":"0HNMRIKIVB9DO"}
+[2026-07-06 13:41:54 INF] Email sent successfully {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"2402aeae-09c5-4240-98ca-9c6014b3886b","ActionName":"AuthService.Api.Controllers.AuthController.VerifyEmail (AuthService.Api)","RequestId":"0HNMRIKIVB9DO:00000004","RequestPath":"/api/v1/auth/verify-email","ConnectionId":"0HNMRIKIVB9DO"}
+[2026-07-06 13:41:54 INF] Email pipeline completed {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"2402aeae-09c5-4240-98ca-9c6014b3886b","ActionName":"AuthService.Api.Controllers.AuthController.VerifyEmail (AuthService.Api)","RequestId":"0HNMRIKIVB9DO:00000004","RequestPath":"/api/v1/auth/verify-email","ConnectionId":"0HNMRIKIVB9DO"}
+[2026-07-06 13:41:54 INF] Email processed {"SourceContext":"AuthService.Application.Services.EmailService","ActionId":"2402aeae-09c5-4240-98ca-9c6014b3886b","ActionName":"AuthService.Api.Controllers.AuthController.VerifyEmail (AuthService.Api)","RequestId":"0HNMRIKIVB9DO:00000004","RequestPath":"/api/v1/auth/verify-email","ConnectionId":"0HNMRIKIVB9DO"}
+[2026-07-06 13:41:54 INF] Email verified successfully for user Alessandro {"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"2402aeae-09c5-4240-98ca-9c6014b3886b","ActionName":"AuthService.Api.Controllers.AuthController.VerifyEmail (AuthService.Api)","RequestId":"0HNMRIKIVB9DO:00000004","RequestPath":"/api/v1/auth/verify-email","ConnectionId":"0HNMRIKIVB9DO"}
+[2026-07-06 13:41:54 INF] HTTP POST /api/v1/auth/verify-email responded 200 in 1816.2600 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRIKIVB9DO:00000004","ConnectionId":"0HNMRIKIVB9DO"}
+[2026-07-06 13:42:00 INF] User login succeeded {"EventId":{"Id":1002,"Name":"LogUserLoggedIn"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"a9bcbde4-e7f4-4639-9db0-ac9e65b89c24","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRIKIVB9DO:00000005","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMRIKIVB9DO"}
+[2026-07-06 13:42:00 INF] HTTP POST /api/v1/auth/login responded 200 in 335.8065 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRIKIVB9DO:00000005","ConnectionId":"0HNMRIKIVB9DO"}
+[2026-07-06 13:42:36 WRN] Failed login attempt {"EventId":{"Id":1003,"Name":"LogFailedLoginAttempt"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"a9bcbde4-e7f4-4639-9db0-ac9e65b89c24","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRIKIVB9DP:00000001","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRIKIVB9DP"}
+[2026-07-06 13:42:36 WRN] Invalid credentials {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNMRIKIVB9DP:00000001","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRIKIVB9DP"}
+[2026-07-06 13:42:36 INF] HTTP POST /api/v1/Auth/login responded 401 in 7.0043 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRIKIVB9DP:00000001","ConnectionId":"0HNMRIKIVB9DP"}
+[2026-07-06 13:42:52 WRN] Failed login attempt {"EventId":{"Id":1003,"Name":"LogFailedLoginAttempt"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"a9bcbde4-e7f4-4639-9db0-ac9e65b89c24","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRIKIVB9DP:00000002","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRIKIVB9DP"}
+[2026-07-06 13:42:52 WRN] Invalid credentials {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNMRIKIVB9DP:00000002","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRIKIVB9DP"}
+[2026-07-06 13:42:52 INF] HTTP POST /api/v1/Auth/login responded 401 in 4.9981 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRIKIVB9DP:00000002","ConnectionId":"0HNMRIKIVB9DP"}
+[2026-07-06 13:43:48 WRN] Failed login attempt {"EventId":{"Id":1003,"Name":"LogFailedLoginAttempt"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"a9bcbde4-e7f4-4639-9db0-ac9e65b89c24","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRIKIVB9DQ:00000001","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRIKIVB9DQ"}
+[2026-07-06 13:43:48 WRN] Invalid credentials {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNMRIKIVB9DQ:00000001","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRIKIVB9DQ"}
+[2026-07-06 13:43:48 INF] HTTP POST /api/v1/Auth/login responded 401 in 6.6181 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRIKIVB9DQ:00000001","ConnectionId":"0HNMRIKIVB9DQ"}
+[2026-07-06 13:44:02 WRN] Failed login attempt {"EventId":{"Id":1003,"Name":"LogFailedLoginAttempt"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"a9bcbde4-e7f4-4639-9db0-ac9e65b89c24","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRIKIVB9DQ:00000002","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRIKIVB9DQ"}
+[2026-07-06 13:44:02 WRN] Invalid credentials {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNMRIKIVB9DQ:00000002","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRIKIVB9DQ"}
+[2026-07-06 13:44:02 INF] HTTP POST /api/v1/Auth/login responded 401 in 4.8123 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRIKIVB9DQ:00000002","ConnectionId":"0HNMRIKIVB9DQ"}
+[2026-07-06 13:45:05 WRN] Failed login attempt {"EventId":{"Id":1003,"Name":"LogFailedLoginAttempt"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"a9bcbde4-e7f4-4639-9db0-ac9e65b89c24","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRIKIVB9DQ:00000003","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRIKIVB9DQ"}
+[2026-07-06 13:45:05 WRN] Invalid credentials {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNMRIKIVB9DQ:00000003","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRIKIVB9DQ"}
+[2026-07-06 13:45:05 INF] HTTP POST /api/v1/Auth/login responded 401 in 5.3594 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRIKIVB9DQ:00000003","ConnectionId":"0HNMRIKIVB9DQ"}
+[2026-07-06 13:45:16 WRN] Failed login attempt {"EventId":{"Id":1003,"Name":"LogFailedLoginAttempt"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"a9bcbde4-e7f4-4639-9db0-ac9e65b89c24","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRIKIVB9DQ:00000004","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRIKIVB9DQ"}
+[2026-07-06 13:45:16 WRN] Invalid credentials {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNMRIKIVB9DQ:00000004","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRIKIVB9DQ"}
+[2026-07-06 13:45:16 INF] HTTP POST /api/v1/Auth/login responded 401 in 13.5697 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRIKIVB9DQ:00000004","ConnectionId":"0HNMRIKIVB9DQ"}
+[2026-07-06 13:47:06 INF] Checking database connection... {"SourceContext":"Program"}
+[2026-07-06 13:47:06 INF] Database ready. Running seed data... {"SourceContext":"Program"}
+[2026-07-06 13:47:06 INF] Database initialization completed successfully {"SourceContext":"Program"}
+[2026-07-06 13:47:07 INF] AuthService API is running at http://0.0.0.0:5156. Health endpoint: http://0.0.0.0:5156/health {"SourceContext":"Program"}
+[2026-07-06 13:47:28 WRN] Failed to determine the https port for redirect. {"EventId":{"Id":3,"Name":"FailedToDeterminePort"},"SourceContext":"Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware","RequestId":"0HNMRITKJP5UQ:00000001","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRITKJP5UQ"}
+[2026-07-06 13:47:28 WRN] Failed login attempt {"EventId":{"Id":1003,"Name":"LogFailedLoginAttempt"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"c5a4190f-df93-44e8-9258-132e64f78b93","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRITKJP5UQ:00000001","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRITKJP5UQ"}
+[2026-07-06 13:47:28 WRN] Invalid credentials {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNMRITKJP5UQ:00000001","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRITKJP5UQ"}
+[2026-07-06 13:47:29 INF] HTTP POST /api/v1/Auth/login responded 401 in 296.4940 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRITKJP5UQ:00000001","ConnectionId":"0HNMRITKJP5UQ"}
+[2026-07-06 13:47:39 INF] HTTP OPTIONS /api/v1/Auth/users responded 204 in 2.3430 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRITKJP5UR:00000001","ConnectionId":"0HNMRITKJP5UR"}
+[2026-07-06 13:47:39 INF] HTTP OPTIONS /api/v1/Auth/users responded 204 in 2.3429 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRITKJP5US:00000001","ConnectionId":"0HNMRITKJP5US"}
+[2026-07-06 13:47:40 INF] HTTP GET /api/v1/Auth/users responded 404 in 53.8890 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRITKJP5UR:00000002","ConnectionId":"0HNMRITKJP5UR"}
+[2026-07-06 13:47:40 INF] HTTP GET /api/v1/Auth/users responded 404 in 2.3756 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRITKJP5UR:00000003","ConnectionId":"0HNMRITKJP5UR"}
+[2026-07-06 13:47:46 INF] User login succeeded {"EventId":{"Id":1002,"Name":"LogUserLoggedIn"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"c5a4190f-df93-44e8-9258-132e64f78b93","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRITKJP5UU:00000001","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMRITKJP5UU"}
+[2026-07-06 13:47:46 INF] HTTP POST /api/v1/auth/login responded 200 in 307.7084 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRITKJP5UU:00000001","ConnectionId":"0HNMRITKJP5UU"}
+[2026-07-06 13:47:51 WRN] Failed login attempt {"EventId":{"Id":1003,"Name":"LogFailedLoginAttempt"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"c5a4190f-df93-44e8-9258-132e64f78b93","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRITKJP5UQ:00000002","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRITKJP5UQ"}
+[2026-07-06 13:47:51 WRN] Invalid credentials {"SourceContext":"AuthService.Api.Middlewares.GlobalExceptionMiddleware","RequestId":"0HNMRITKJP5UQ:00000002","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRITKJP5UQ"}
+[2026-07-06 13:47:51 INF] HTTP POST /api/v1/Auth/login responded 401 in 8.9485 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRITKJP5UQ:00000002","ConnectionId":"0HNMRITKJP5UQ"}
+[2026-07-06 13:49:40 INF] User login succeeded {"EventId":{"Id":1002,"Name":"LogUserLoggedIn"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"c5a4190f-df93-44e8-9258-132e64f78b93","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRITKJP5UQ:00000003","RequestPath":"/api/v1/Auth/login","ConnectionId":"0HNMRITKJP5UQ"}
+[2026-07-06 13:49:40 INF] HTTP POST /api/v1/Auth/login responded 200 in 407.8083 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRITKJP5UQ:00000003","ConnectionId":"0HNMRITKJP5UQ"}
+[2026-07-06 16:52:33 INF] HTTP OPTIONS /api/v1/auth/login responded 204 in 0.5822 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRITKJP5UV:00000001","ConnectionId":"0HNMRITKJP5UV"}
+[2026-07-06 16:52:34 INF] User login succeeded {"EventId":{"Id":1002,"Name":"LogUserLoggedIn"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"c5a4190f-df93-44e8-9258-132e64f78b93","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRITKJP5UV:00000002","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMRITKJP5UV"}
+[2026-07-06 16:52:34 INF] HTTP POST /api/v1/auth/login responded 200 in 341.2905 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRITKJP5UV:00000002","ConnectionId":"0HNMRITKJP5UV"}
+[2026-07-06 17:19:33 INF] HTTP OPTIONS /api/v1/auth/login responded 204 in 0.1020 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRITKJP5V0:00000001","ConnectionId":"0HNMRITKJP5V0"}
+[2026-07-06 17:19:33 INF] User login succeeded {"EventId":{"Id":1002,"Name":"LogUserLoggedIn"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"c5a4190f-df93-44e8-9258-132e64f78b93","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRITKJP5V0:00000002","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMRITKJP5V0"}
+[2026-07-06 17:19:33 INF] HTTP POST /api/v1/auth/login responded 200 in 117.4787 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRITKJP5V0:00000002","ConnectionId":"0HNMRITKJP5V0"}
+[2026-07-06 17:21:02 INF] HTTP OPTIONS /api/v1/auth/login responded 204 in 0.2119 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRITKJP5V2:00000001","ConnectionId":"0HNMRITKJP5V2"}
+[2026-07-06 17:21:02 INF] User login succeeded {"EventId":{"Id":1002,"Name":"LogUserLoggedIn"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"c5a4190f-df93-44e8-9258-132e64f78b93","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRITKJP5V2:00000002","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMRITKJP5V2"}
+[2026-07-06 17:21:02 INF] HTTP POST /api/v1/auth/login responded 200 in 93.4152 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRITKJP5V2:00000002","ConnectionId":"0HNMRITKJP5V2"}
+[2026-07-06 17:24:39 INF] HTTP OPTIONS /api/v1/auth/login responded 204 in 0.1282 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRITKJP5V3:00000001","ConnectionId":"0HNMRITKJP5V3"}
+[2026-07-06 17:24:39 INF] User login succeeded {"EventId":{"Id":1002,"Name":"LogUserLoggedIn"},"SourceContext":"AuthService.Application.Services.AuthService","ActionId":"c5a4190f-df93-44e8-9258-132e64f78b93","ActionName":"AuthService.Api.Controllers.AuthController.Login (AuthService.Api)","RequestId":"0HNMRITKJP5V3:00000002","RequestPath":"/api/v1/auth/login","ConnectionId":"0HNMRITKJP5V3"}
+[2026-07-06 17:24:39 INF] HTTP POST /api/v1/auth/login responded 200 in 124.7220 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRITKJP5V3:00000002","ConnectionId":"0HNMRITKJP5V3"}
+[2026-07-06 17:37:38 INF] HTTP OPTIONS /api/v1/Auth/users responded 204 in 0.1033 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRITKJP5V4:00000001","ConnectionId":"0HNMRITKJP5V4"}
+[2026-07-06 17:37:38 INF] HTTP OPTIONS /api/v1/Auth/users responded 204 in 0.0756 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRITKJP5V5:00000001","ConnectionId":"0HNMRITKJP5V5"}
+[2026-07-06 17:37:38 INF] HTTP GET /api/v1/Auth/users responded 404 in 16.4138 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRITKJP5V4:00000002","ConnectionId":"0HNMRITKJP5V4"}
+[2026-07-06 17:37:38 INF] HTTP GET /api/v1/Auth/users responded 404 in 0.4247 ms {"SourceContext":"Serilog.AspNetCore.RequestLoggingMiddleware","RequestId":"0HNMRITKJP5V5:00000002","ConnectionId":"0HNMRITKJP5V5"}

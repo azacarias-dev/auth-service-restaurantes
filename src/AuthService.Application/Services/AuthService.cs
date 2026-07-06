@@ -184,6 +184,8 @@ public class AuthService(
             Id = user.Id,
             Name = user.Name,
             Email = user.Email,
+            Phone = user.Phone,
+            Address = user.Address,
             Role = user.UserRoles.FirstOrDefault()?.Role?.Name ?? RoleConstants.USER_ROLE
         };
     }
