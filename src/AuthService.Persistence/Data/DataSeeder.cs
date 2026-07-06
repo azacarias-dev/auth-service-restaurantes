@@ -48,7 +48,7 @@ public static class DataSeeder
                     Id = userId,
                     Name = "Admin",
                     Surname = "User",
-                    Email = "admin@ksports.local",
+                    Email = "admin@kinaliani.local",
                     Password = passwordHasher.HashPassword("12345678"),
                     IsActive = true,
                     UserEmail = new UserEmail
